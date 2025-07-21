@@ -1,2 +1,2 @@
-# dans-bagpack-profile
-Customization profile of the RDA BagPack specifications
+# dans-ocfl-extensions
+Extensions for OCFL (the [Oxford Common File Layout](https://ocfl.io/){:target=_blank}) defined by DANS for the DANS Data Vault.
