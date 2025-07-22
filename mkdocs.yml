@@ -23,7 +23,8 @@ repo_url: https://github.com/DANS-KNAW/dans-ocfl-extensions
 
 nav:
   - Welcome: index.md
-  - Packaging Format: packaging-format/
+  - Object Version Properties: object-version-properties/object-version-properties.md
+  - Packaging Format: packaging-format-registry/packaging-format-registry.md
 
 plugins:
   - markdownextradata
