@@ -39,14 +39,16 @@ A manifest of the registered Packaging Formats must be maintained in `packaging
     - Default: Not applicable
 
 # Implementation
-An OCFL Repository with this extension enabled must add extra information for each OCFL Object Version that is added to the Repository. For every new OCFL Object/Version the version_packaging_format.json for that Object must be updated.
+An OCFL Repository with this extension enabled must add extra information for each OCFL Object Version that is added to the Repository. For every new OCFL Object/Version the Packaging Format for that Object/Version must be recorded.
 
 To add a new packaging format to the OCFL Root the packaging_format_inventory.json must be updated and the files describing the Packaging Format must be placed in the `packaging_formats` folder under that subfolder. 
 
-When reading an OCFL Object Version the version_packaging_format.json can be consulted for more info on the packaging format of this version.
+How this Packaging Format is recorded, is not specified in this extension. One possible way would be to use the OCFL extension `Object Version Properties`.
+
+When reading an OCFL Object Version the recorded Packaging Format can be consulted for more info on the packaging format of this version.
 
 # Example
-The packaging_format_inventory.json contains the manifest with the available OCFL Object packaging_formats for this OCFL Repository. 
+The packaging_format_inventory.json contains the manifest with the available OCFL Object Packaging Formats for this OCFL Repository. 
 ```
 packaging_format_inventory.json
 {
@@ -65,7 +67,8 @@ packaging_format_inventory.json
 }
 ```
 
-The version_packaging_format.json contains for each version in this OCFL Object the packaging format of the version
+In this example we use the Object Version Properties Extension to record the Packaging Format used for each version in this OCFL Object
+
 ```
 object_version_properties.json
 {
@@ -76,12 +79,15 @@ object_version_properties.json
 ```
 
 The complete OCFL Repository would then look something like this: 
+
 ```
 [storage_root]
   ├── 0=ocfl_1.0
   ├── ocfl_1.0.txt
   ├── ocfl_layout.json
   ├── extensions
+  |   ├── object-version-properties/
+  |   |   └── config.json
   │   └── packaging-format-registry/
   │       ├── config.json
   |       ├── packaging_format_inventory.json
@@ -99,10 +105,10 @@ The complete OCFL Repository would then look something like this:
   │               └── 0=ocfl_object_1.0
   │                   ├── inventory.json
   │                   ├── inventory.json.sha512
-  |                   ├── extensions
-  │                   └── object-version-properties/
-  │                       ├── object_version_properties.json
-  │                       └── object_version_properties.json.sha512
+  |                   └── extensions
+  │                       └── object-version-properties/
+  │                           ├── object_version_properties.json
+  │                           └── object_version_properties.json.sha512
   └────────────────── v1/
                       ├── inventory.json
                       ├── inventory.json.sha512
@@ -139,7 +145,7 @@ Placing this packaging-format.md file in the storage_root of an OCFL repository 
   ├── ocfl_layout.json
   ├── object-version-registry.md
   ├── packaging-format-registry.md 
-  ├── extensions
+  ├── extensions/
   |   ├── object-version-properties/
   |   |   └── config.json
   │   └── packaging-format-registry/
@@ -158,10 +164,10 @@ Placing this packaging-format.md file in the storage_root of an OCFL repository 
   │               └── 0=ocfl_object_1.0
   │                   ├── inventory.json
   │                   ├── inventory.json.sha512
-  |                   ├── extensions
-  │                   └── object-version-properties/
-  │                       ├── object_version_properties.json
-  │                       └── object_version_properties.json.sha512
+  |                   └── extensions/
+  │                       └── object-version-properties/
+  │                           ├── object_version_properties.json
+  │                           └── object_version_properties.json.sha512
   └────────────────── v1/
                       ├── inventory.json
                       ├── inventory.json.sha512
