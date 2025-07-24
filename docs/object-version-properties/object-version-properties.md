@@ -1,7 +1,7 @@
 # Overview
-This extension works together with other extensions and facilitates a way to record metadata on a OCFL object version that is not recorded in the object version itself. This can be necessary because it is related to the repository (e.g. packaging format information) or because it is only available after the object version is already archived. Since OCFL repository objects are immutable, they cannot be changed.
+This extension facilitates a way to record metadata on an OCFL object version that is not recorded in the object version itself. This can be necessary because it is related to the repository (e.g. packaging format information) or because it is only available after the object version is already archived. Since OCFL repository objects are immutable, they cannot be changed.
 This includes deaccessioning or deletion actions.
-This extension only describes how the properties should be recorded, which properties to use are described in other extensions. 
+This extension only describes how the properties should be recorded, which properties to use are described in other extensions or in it's `config.json`. 
 
 # Parameters
 the `object_version_properties.json` file in every object_root contains entries for all versions in this object. Per version, it contains a list of keys (as declared in the `config.json` of this extension in the storage_root) and a value or object containing the properties defined in . Each property is declared in the `config.json` of the extension, and is described with the following attributes:
@@ -37,7 +37,7 @@ Three examples will be given:
 3. a complex property that uses another extension
 
 ## 1. a simple property
-if the repository wants to record the archival date for each OCFL Object Version, it could achieve that in the following way:
+if the repository wants to record a simple property, for instance the archival date for each OCFL Object Version, it could achieve that in the following way:
 
 ```
 [storage_root]
@@ -114,7 +114,7 @@ if the repository wants to record a complex object for a version, for instance t
 }
 
 ```
-and the `object-version-properties.json` of the OCFL object would have the following entry:
+and the `object-version-properties.json` of the OCFL object might have the following entry:
 
 ```
 {
