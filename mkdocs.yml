@@ -25,6 +25,7 @@ nav:
   - Welcome: index.md
   - Object Version Properties: object-version-properties/object-version-properties.md
   - Packaging Format: packaging-format-registry/packaging-format-registry.md
+  - ⇒ DANS Data Station Architecture: arch.md
 
 plugins:
   - markdownextradata
