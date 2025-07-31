@@ -7,60 +7,62 @@
 
 ## Overview
 
-In order for an OCFL Repository to be self-contained, it MAY want to explicitly define and declare the format with which an Object is packaged. This might not
-be the same for each version in an Object.
-The definitions of the Packaging Format are placed in the storage_root extension directory.
-The declarations can then be placed in the object_root extension directory for each object. How this is done is not defined in this extension. One way to do
-this is to use the Object-Version-Properties Extension.
+In order for an OCFL Repository to be self-contained, it may want to explicitly define and declare the packaging format used for each OCFL Object Version. We
+broadly define "packaging format" as a set of rules about the way the content files of an OCFL Object Version are laid out, organized, and described. The
+registry is organized in a similar way to [0008-schema-registry](https://ocfl.github.io/extensions/0008-schema-registry.html){:target=_blank}.
+
+## The packaging format registry
+
+Each packaging format is described in a subdirectory of the `packaging_formats` directory in the storage root's extensions directory. These files may include
+documentation, examples, machine actionable code and other information about the packaging format. How to interpret these files is outside the scope of this
+extension.
 
 ## Parameters
 
-### config.json
+Configuration is done by setting values in the file `config.json` at the top level of the extension's directory. The keys expected are:
 
-Configuration is done by setting values in config.json at the top level of the extension's directory. The keys expected are:
+- Name: `extensionName`
+    - Description: String identifying the extension.
+    - Type: String
+    - Constraints: Must be packaging-format-registry.
+    - Default: packaging-format-registry
 
-- Name: extensionName
-- Description: String identifying the extension.
-- Type: String
-- Constraints: Must be packaging-format-registry.
-- Default: packaging-format-registry
+- Name: `packagingFormatDigestAlgorithm`
+    - Description: Algorithm used for calculating safe filenames from packaging formats. Use `name`/`version` as input.
+    - Type: String
+    - Constraints: Must be a valid digest algorithm returning strings which are safe file names on the target file system.
+    - Default: md5
 
-- Name: packagingFormatDigestAlgorithm
-- Description: Algorithm used for calculating safe filenames from packaging formats. Use `name`/`version` as input.
-- Type: String
-- Constraints: Must be a valid digest algorithm returning strings which are safe file names on the target file system.
-- Default: md5
+- Name: `digestAlgorithm`
+    - Description: Digest algorithm used for calculating fixity of the packaging registry inventory.
+    - Type: String
+    - Constraints: Must be a valid digest algorithm.
+    - Default: The same value used elsewhere in the OCFL for integrity checking.
 
-- Name: digestAlgorithm
-- Description: Digest algorithm used for calculating fixity of the packaging registry inventory.
-- Type: String
-- Constraints: Must be a valid digest algorithm.
-- Default: The same value used elsewhere in the OCFL for integrity checking.
-
-### packaging_format_inventory.json
+## packaging_format_inventory.json
 
 A manifest of the registered Packaging Formats must be maintained in`packaging_format_inventory.json`.
 
-- Name:`manifest`
+- Name: `manifest`
     - Description: Object containing manifest entries.
     - Type: Object
     - Constraints: Must contain one entry per registered Packaging Format; may contain 3 sub-keys documented below. These entry names must be short enough to be
       easily used to identify the packaging format.
     - Default: Not applicable
 
-#### manifest entry properties for `packaging_format_inventory.json`
+### manifest entry properties for `packaging_format_inventory.json`
 
-- Name:`name`
-    - Description: The human readable name of the packaging format.
+- Name: `name`
+    - Description: The human-readable name of the packaging format.
     - Type: String
     - Constraints: Not applicable
     - Default: Not applicable
-- Name:`version`
+- Name: `version`
     - Description: Version of this packaging format.
     - Type: String
     - Constraints: The `name` and `version` together must be unique for the packaging formats in this storage root ``
     - Default: Not applicable
-- Name:`summary`
+- Name: `summary`
     - Description: Short description of the packaging format
     - Type: String
     - Constraints: Not applicable

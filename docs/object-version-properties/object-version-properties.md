@@ -35,7 +35,7 @@ features may include the ability to search for object versions based on their pr
 
 If the repository wants to record a simple property, for instance the User-Agent that made the request to create this version, this could be done as follows.
 
-```
+```text
 [storage_root]
   ├── 0=ocfl_1.0
   ├── ocfl_1.0.txt
