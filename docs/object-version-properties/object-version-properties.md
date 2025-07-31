@@ -1,32 +1,39 @@
 # OCFL Extension: Object Version Properties
 
 - **Extension Name:** object-version-properties
-- **Authors:** 
+- **Authors:** Linda Reijnhoudt, Jan van Mansum
 - **Minimum OCFL Version:** 1.0
 - **Status:** DRAFT
 
 ## Overview
-This extension facilitates a way to record metadata on an OCFL object version that is not recorded in the object version itself. This can be necessary because it is related to the repository (e.g. packaging format information) or because it is only available after the object version is already archived. Since OCFL repository objects are immutable, they cannot be changed.
-This includes deaccessioning or deletion actions.
-This extension only describes how the properties should be recorded, it does not prescribe which properties will be recorded.
 
-## Parameters
-The `object_version_properties.json` file in the object_root extensions directory might contain entries for all versions in this object. Per version, it lists keys and a value or object containing subproperties.
+This extension provides a way to record metadata on an OCFL object version that is not recorded in the content of object version itself. This may be useful for
+cases where additional information about the version is needed, which cannot conveniently be stored in the object itself in a standard way. Another use-case may
+be a property that is not available at the time the version content is created. This extension only describes how the properties should be recorded, it does not
+prescribe what properties should be recorded.
+
+## Object version properties
+
+The object version properties are stored in a JSON file named `object_version_properties.json` in the extensions directory of the OCFL object. This file must
+contain entries for all versions in this object. Each version entry has as key the version identifier (e.g. `v1`, `v2`, etc.) and as value a JSON object with
+the properties for that version. If no properties are recorded for a version, the entry for that version must be an empty JSON object. The properties recorded
+under a version key pertain to that version only, so when a new version is created, properties that do not change must be copied from the previous version.
+Otherwise, this extension does restrict the properties that can be recorded, nor does it define their semantics.
 
 ## Implementation
-Implementing software might check the well-formedness of the `object-version-properties.json` in the extension folder of the object_root.
 
-Implementing software might check whether the file `object-version-properties.json` is available for each OCFL Object and has a key for each version in this object.
-(**TODO:** maybe this should not be mandatory?)
+Clients that implement this extension must validate that the `object_version_properties.json` file is well-formed JSON and that it contains an entry for each
+version in the object as part of the validation of the OCFL object.
 
-## Example
-Two examples will be given:
+Clients may support storing the version properties when creating a new version of an OCFL object, by passing the properties map as an extra parameter to the
+version creation method. Likewise, clients may support retrieving the properties for a specific version of an OCFL object as a properties map. Other optional
+features may include the ability to search for object versions based on their properties.
 
-1. a simple property
-2. a complex property
+## Examples
 
-### 1. a simple property
-if the repository wants to record a simple property, for instance the archival date for each OCFL Object Version, it could achieve that in the following way:
+### 1. Simple property
+
+If the repository wants to record a simple property, for instance the User-Agent that made the request to create this version, this could be done as follows.
 
 ```
 [storage_root]
@@ -51,28 +58,36 @@ if the repository wants to record a simple property, for instance the archival d
                       └── content/
                           └── ... files ...
 ```
-the `object-version-properties.json` of the OCFL object could have the following entry:
 
-```
+The `object-version-properties.json` of the OCFL object could have the following entry:
+
+```json
 {
-  "v1" : {
-    "archival-date" : "2024-07-30T21:12:04"
+  "v1": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
   }
 }
 ```
 
-### 2. a complex property
-if the repository wants to record a complex object for a version, for instance that it has been deaccessioned, this could be done with a similar structure. The `object-version-properties.json` of the OCFL object might have the following entry:
+### 2. Complex property
 
-```
+If the repository wants to record a complex object for a version, for instance that it has been deaccessioned, this could be done with a similar structure. The
+`object-version-properties.json` of the OCFL object might have the following entry:
+
+```json
 {
-  "v2": {"archival-date" : "2025-10-15T13:19:00"},
-  "v1" : {
-    "archival-date" : "2024-07-30T21:12:04"
-    "deaccessioned" : {
-      "datetime" : "2025-10-15T13:19:00",
-      "reason" : "Deaccessioned because dataset was deleted in Easy"
+  "v1": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+  },
+  "v2": {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)",
+    "deaccessioned": {
+      "datetime": "2025-10-15T13:19:00",
+      "reason": "Deaccessioned because dataset was deleted in Easy"
     }
   }
 }
 ```
+
+Note, that this example also demonstrates that a property that remain unchanged between versions (in this case "User-Agent") must be copied from the previous
+version.
