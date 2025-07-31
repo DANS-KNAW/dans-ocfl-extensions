@@ -10,7 +10,7 @@ This extension facilitates a way to define properties for an OCFL object.
 This extension only describes which properties could be recorded, and their definitions and structures. It does not prescribe how these are stored for objects or object versions. 
 
 ## Parameters
-The `config.json` in this extension defines the properties using the following keys: `name`, 
+The `config.json` in this extension has the key `extensionName`. Furthermore it defines the properties using the following keys: `name`, 
 `description`, `type`, `constraint`, `properties`, `extension` and `mandatory`. 
 
 
@@ -58,6 +58,7 @@ with the following content for `property-registry/config.json`:
 
 ```
 {
+  "extensionName" : "property-registry",
   "archival-date" : {
       "description" : "The date on which this Object Version has been archived in this repository"
       "type" : "string", 
@@ -73,6 +74,7 @@ if the repository wants to record a complex object for a version, for instance t
 
 ```
 {
+  "extensionName" : "property-registry",
   "deaccessioned" : {
     "description" : "If given, this version of the object has been deaccessioned and should not be disseminated",
     "type" : "object",
@@ -100,6 +102,7 @@ If the property to be recorded is described in an extension, the `property-regis
 
 ```
 {
+  "extensionName" : "property-registry",
   "packaging-format" : {
     "description" : "The packaging format of this Object Version",
     "type" : "object",
@@ -108,7 +111,7 @@ If the property to be recorded is described in an extension, the `property-regis
     "properties" : [{
       "description" : "the packaging format used for this object version",
       "type" : "string",
-      "constraint" : "one of the keys in the packaging-format-registry.json",
+      "constraint" : "one of the name/version pairs in the packaging-format-registry.json",
       "mandatory": true
     }]
   }
@@ -132,9 +135,9 @@ If the property to be recorded is described in an extension, the `property-regis
   |       ├── packaging_format_inventory.json
   |       ├── packaging_format_inventory.json.sha512
   │       └── packaging_formats
-  │           ├── 40cdd53d9a263e5466b8954d82d23daa
-  │               └── ... files describing the packaging_format ...
-  │           └── 95d751340dcdc784fd759dbc7ddb9633
+  │           ├── 05b408a38e341de9bb4316aa812115ee
+  │           |   └── ... files describing the packaging_format ...
+  │           └── 76f773808534f2969d7a405b99e78b11
   │               └── ... files describing the packaging_format ...  
 ```
 
@@ -142,6 +145,7 @@ If the property to be recorded is described in an extension, the `property-regis
 
 ```
 {
+  "extensionName" : "property-registry",
   "archival-date" : {
       "description" : "The date on which this Object Version has been archived in this repository"
       "type" : "string", 
@@ -177,7 +181,7 @@ If the property to be recorded is described in an extension, the `property-regis
     "properties" : [{
       "description" : "the packaging format used for this object version",
       "type" : "string",
-      "constraint" : "one of the keys in the packaging-format-registry.json",
+      "constraint" : "one of the name/version pairs defined in the packaging-format-registry.json",
       "mandatory": true
     }]
   }

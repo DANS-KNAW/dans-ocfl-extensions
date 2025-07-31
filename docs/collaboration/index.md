@@ -18,9 +18,9 @@ This document describes a possible way to combine the three OCFL Extensions to a
   |       ├── packaging_format_inventory.json
   |       ├── packaging_format_inventory.json.sha512
   │       └── packaging_formats
-  │           ├── 40cdd53d9a263e5466b8954d82d23daa
+  │           ├── 05b408a38e341de9bb4316aa812115ee 
   │               └── ... files describing the packaging_format ...
-  │           └── 95d751340dcdc784fd759dbc7ddb9633
+  │           └── 76f773808534f2969d7a405b99e78b11 
   │               └── ... files describing the packaging_format ...  
   ├── 0de
   |   └── 45c
@@ -43,8 +43,8 @@ This document describes a possible way to combine the three OCFL Extensions to a
 
 the config.json in the property-registry extension declares which storage-root extensions might be used in the object-version-properties.json in the object versions.
 
+
 ```
-property-registry/config.json
 {
   "archival-date" : {
       "description" : "The date on which this Object Version has been archived in this repository"
@@ -76,10 +76,10 @@ property-registry/config.json
     "type" : "object",
     "extension" : "packaging-format-registry",
     "mandatory" : true,
-    properties" : [{
+    "properties" : [{
       "description" : "the packaging format used for this object version",
       "type" : "string",
-      "constraint" : "one of the keys in the packaging-format-registry.json",
+      "constraint" : "a name/version pair defined in the packaging-format-registry.json",
       "mandatory": true
     }]
   }
@@ -91,16 +91,14 @@ and two examples of different possible instantiations of `object_version_propert
 
 
 ```
-object_version_properties.json
-
 {
   "v2": {
     "archival-date" : "2020-09-28T16:22:44",
-    "packaging-format": "BagIt v0.97"
+    "packaging-format": "BagIt/v0.97"
   },
   "v1": {
     "archival-date" : "2018-03-19T06:22:11",
-    "packaging-format": "DANS RDA BagPack v0.1.0",
+    "packaging-format": "BagIt/v0.97",
     "deaccessioned": {
       "datetime": "2020-09-28T13:55:00",
       "reason": "Deaccessioned because dataset was deleted in Easy"
@@ -108,14 +106,13 @@ object_version_properties.json
   }
 }
 ```
+another example of `object_version_properties.json`:
 
 ```
-object_version_properties.json
-
 {
   "v1": {
     "archival-date" : "2002-07-12T15:14:33",
-    "packaging-format": "DANS RDA BagPack v0.1.0"    
+    "packaging-format": "BagIt/v1.0"    
   }
 }
 ```
