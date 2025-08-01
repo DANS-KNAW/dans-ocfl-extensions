@@ -41,7 +41,7 @@ Configuration is done by setting values in the file `config.json` at the top lev
 
 ## packaging_format_inventory.json
 
-A manifest of the registered Packaging Formats must be maintained in`packaging_format_inventory.json`.
+A manifest of the registered Packaging Formats must be maintained in `packaging_format_inventory.json`.
 
 - Name: `manifest`
     - Description: Object containing manifest entries.
