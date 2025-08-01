@@ -78,7 +78,7 @@ in the `packaging_formats` folder under that subfolder.
 
 A process could be implemented which ensures all OCFL objects/versions written are checked for packaging format references. Where not already registered, the
 packaging format must be documented and registered as described below. The packaging format is identified by the name and version referenced. The digest of the
-`name`/`version` (as configured by identifierDigestAlgorithm) must be used as a filename. MD5 may be sufficient, other algorithms may be configured.
+`name`/`version` (as configured by packagingFormatDigestAlgorithm) must be used as a filename. MD5 may be sufficient, other algorithms may be configured.
 
 The values of digestAlgorithm and identifierDigestAlgorithm should not be changed once the registry is initialised. If changing the digest is unavoidable, all
 existing entries in the registry must be updated to the new algorithm(s).
