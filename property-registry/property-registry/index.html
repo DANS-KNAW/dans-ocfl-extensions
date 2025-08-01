@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Property Registry - dans-ocfl-extensions</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Property Registry";
+        var mkdocs_page_input_path = "property-registry/property-registry.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> dans-ocfl-extensions
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">DANS OCFL Extensions</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../object-version-properties/object-version-properties/">Object Version Properties</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../packaging-format-registry/packaging-format-registry/">Packaging Format Registry</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Property Registry</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#implementation">Implementation</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example">Example</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#1-a-simple-property">1. a simple property</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#2-a-complex-property">2. a complex property</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#3-a-complex-property-that-uses-another-extension">3. a complex property that uses another extension</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#a-storage_root-with-all-the-above-examples-implemented">A storage_root with all the above examples implemented</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/">Collaboration</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Context</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../arch/">⇒ DANS Data Station Architecture</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">dans-ocfl-extensions</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>DANS OCFL Extensions &raquo;</li><li>Property Registry</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/DANS-KNAW/dans-ocfl-extensions/edit/master/docs/property-registry/property-registry.md"> Edit on DANS-KNAW/dans-ocfl-extensions</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ocfl-extension-property-registry">OCFL Extension: Property Registry<a class="headerlink" href="#ocfl-extension-property-registry" title="Permanent link">&para;</a></h1>
+<ul>
+<li><strong>Extension Name:</strong> property-registry</li>
+<li><strong>Authors:</strong> Linda Reijnhoudt, Jan van Mansum</li>
+<li><strong>Minimum OCFL Version:</strong> 1.0</li>
+<li><strong>Status:</strong> DRAFT</li>
+</ul>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This extension facilitates a way to define properties for an OCFL object.
+This extension only describes which properties could be recorded, and their definitions and structures. It does not prescribe how these are stored for objects or object versions. </p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<p>The <code>config.json</code> in this extension has the key <code>extensionName</code>. Furthermore it defines the properties using the following keys: <code>name</code>, 
+<code>description</code>, <code>type</code>, <code>constraint</code>, <code>properties</code>, <code>extension</code> and <code>mandatory</code>. </p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>description</th>
+<th>mandatory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>description</td>
+<td>human readable explanation of this property</td>
+<td>true</td>
+</tr>
+<tr>
+<td>type</td>
+<td>a json type (number, string, boolean or object). An object needs the <code>properties</code> to be filled</td>
+<td>true</td>
+</tr>
+<tr>
+<td>extension</td>
+<td>if used, the name MUST be an extension in the storage_root that describes the functionality</td>
+<td>false</td>
+</tr>
+<tr>
+<td>constraint</td>
+<td></td>
+<td>false</td>
+</tr>
+<tr>
+<td>mandatory</td>
+<td>boolean</td>
+<td>true</td>
+</tr>
+<tr>
+<td>properties</td>
+<td>an array of properties with the following keys</td>
+<td>false</td>
+</tr>
+<tr>
+<td>property.name</td>
+<td></td>
+<td>true</td>
+</tr>
+<tr>
+<td>property.description</td>
+<td></td>
+<td>true</td>
+</tr>
+<tr>
+<td>property.type</td>
+<td>a json type (number, string, boolean)</td>
+<td>true</td>
+</tr>
+<tr>
+<td>property.constraint</td>
+<td></td>
+<td>false</td>
+</tr>
+<tr>
+<td>property.mandatory</td>
+<td>boolean whether this property is mandatory within the parent object</td>
+<td>true</td>
+</tr>
+</tbody>
+</table>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<p>Implementing software might check whether the extensions mentioned in the <code>config.json</code> are installed in the storage_root.</p>
+<p>Implementing software might check whether the <code>config.json</code> is well-formed.</p>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<p>Three examples will be given:</p>
+<ol>
+<li>a simple property</li>
+<li>a complex property</li>
+<li>a complex property that uses another extension</li>
+</ol>
+<h3 id="1-a-simple-property">1. a simple property<a class="headerlink" href="#1-a-simple-property" title="Permanent link">&para;</a></h3>
+<p>if the repository wants to record a simple property, for instance the archival date for each OCFL Object Version, it could achieve that in the following way:</p>
+<div class="codehilite"><pre><span></span><code>[storage_root]
+  ├── 0=ocfl_1.0
+  ├── ocfl_1.0.txt
+  ├── ocfl_layout.json
+  ├── property-registry.md
+  ├── extensions
+      └── property-registry/
+          └── config.json    
+</code></pre></div>
+
+<p>with the following content for <code>property-registry/config.json</code>:</p>
+<div class="codehilite"><pre><span></span><code>{
+  &quot;extensionName&quot; : &quot;property-registry&quot;,
+  &quot;archival-date&quot; : {
+      &quot;description&quot; : &quot;The date on which this Object Version has been archived in this repository&quot;
+      &quot;type&quot; : &quot;string&quot;, 
+      &quot;constraint&quot;: &quot;a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format&quot;,
+      &quot;mandatory&quot; : true
+    },
+}
+</code></pre></div>
+
+<h3 id="2-a-complex-property">2. a complex property<a class="headerlink" href="#2-a-complex-property" title="Permanent link">&para;</a></h3>
+<p>if the repository wants to record a complex object for a version, for instance that it has been deaccessioned, this could be done with the same structure, but with a different content for <code>property-registry/config.json</code>:</p>
+<div class="codehilite"><pre><span></span><code>{
+  &quot;extensionName&quot; : &quot;property-registry&quot;,
+  &quot;deaccessioned&quot; : {
+    &quot;description&quot; : &quot;If given, this version of the object has been deaccessioned and should not be disseminated&quot;,
+    &quot;type&quot; : &quot;object&quot;,
+    &quot;constraint&quot; &quot;&quot;
+    &quot;mandatory&quot; : false,
+    &quot;properties&quot; [{
+      &quot;name&quot; : &quot;datetime&quot;
+      &quot;description&quot; : &quot;The date on which this object version has been deaccessioned&quot;
+      &quot;type&quot; : &quot;string&quot;, 
+      &quot;constraint&quot;: &quot;a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format&quot;,
+      &quot;mandatory&quot; : true
+    }, {
+      &quot;name&quot; : &quot;reason&quot;,
+      &quot;description&quot;: &quot;The reason why this object version has been deaccessioned.&quot;,
+      &quot;type&quot; : &quot;string&quot;,
+      &quot;constraint&quot; : &quot;&quot;,
+      &quot;mandatory&quot;: true
+    }]
+  }
+}
+</code></pre></div>
+
+<h3 id="3-a-complex-property-that-uses-another-extension">3. a complex property that uses another extension<a class="headerlink" href="#3-a-complex-property-that-uses-another-extension" title="Permanent link">&para;</a></h3>
+<p>If the property to be recorded is described in an extension, the <code>property-registry/config.json</code> would look like this:</p>
+<div class="codehilite"><pre><span></span><code>{
+  &quot;extensionName&quot; : &quot;property-registry&quot;,
+  &quot;packaging-format&quot; : {
+    &quot;description&quot; : &quot;The packaging format of this Object Version&quot;,
+    &quot;type&quot; : &quot;object&quot;,
+    &quot;extension&quot; : &quot;packaging-format-registry&quot;,
+    &quot;mandatory&quot; : true
+    &quot;properties&quot; : [{
+      &quot;description&quot; : &quot;the packaging format used for this object version&quot;,
+      &quot;type&quot; : &quot;string&quot;,
+      &quot;constraint&quot; : &quot;one of the name/version pairs in the packaging-format-registry.json&quot;,
+      &quot;mandatory&quot;: true
+    }]
+  }
+}
+</code></pre></div>
+
+<h3 id="a-storage_root-with-all-the-above-examples-implemented">A storage_root with all the above examples implemented<a class="headerlink" href="#a-storage_root-with-all-the-above-examples-implemented" title="Permanent link">&para;</a></h3>
+<div class="codehilite"><pre><span></span><code>[storage_root]
+  ├── 0=ocfl_1.0
+  ├── ocfl_1.0.txt
+  ├── ocfl_layout.json
+  ├── property-registry.md
+  ├── packaging-format-registry.md
+  ├── extensions
+  |   ├── property-registry/
+  |   |   └── config.json  
+  │   └── packaging-format-registry/
+  │       ├── config.json
+  |       ├── packaging_format_inventory.json
+  |       ├── packaging_format_inventory.json.sha512
+  │       └── packaging_formats
+  │           ├── 05b408a38e341de9bb4316aa812115ee
+  │           |   └── ... files describing the packaging_format ...
+  │           └── 76f773808534f2969d7a405b99e78b11
+  │               └── ... files describing the packaging_format ...  
+</code></pre></div>
+
+<p><code>property-registry/config.json</code> would then contain the following json:</p>
+<div class="codehilite"><pre><span></span><code>{
+  &quot;extensionName&quot; : &quot;property-registry&quot;,
+  &quot;archival-date&quot; : {
+      &quot;description&quot; : &quot;The date on which this Object Version has been archived in this repository&quot;
+      &quot;type&quot; : &quot;string&quot;, 
+      &quot;constraint&quot;: &quot;a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format&quot;,
+      &quot;mandatory&quot; : true
+  },
+  &quot;deaccessioned&quot; : {
+    &quot;description&quot; : &quot;If given, this version of the object has been deaccessioned and should not be disseminated&quot;,
+    &quot;type&quot; : &quot;object&quot;,
+    &quot;constraint&quot;: &quot;&quot;,
+    &quot;mandatory&quot; : false,
+    &quot;properties&quot; [
+      {
+        &quot;name&quot; : &quot;datetime&quot;,
+        &quot;description&quot; : &quot;The date on which this object version has been deaccessioned&quot;,
+        &quot;type&quot; : &quot;string&quot;, 
+        &quot;constraint&quot;: &quot;a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format&quot;,
+        &quot;mandatory&quot; : true
+      }, {
+        &quot;name&quot; : &quot;reason&quot;,
+        &quot;description&quot;: &quot;The reason why this object version has been deaccessioned.&quot;,
+        &quot;type&quot; : &quot;string&quot;,
+        &quot;constraint&quot; : &quot;&quot;,
+        &quot;mandatory&quot;: true
+      }
+    ]
+  },
+  &quot;packaging-format&quot; : {
+    &quot;description&quot; : &quot;The packaging format of this Object Version&quot;,
+    &quot;type&quot; : &quot;object&quot;,
+    &quot;extension&quot; : &quot;packaging-format-registry&quot;,
+    &quot;mandatory&quot; : true,
+    &quot;properties&quot; : [{
+      &quot;description&quot; : &quot;the packaging format used for this object version&quot;,
+      &quot;type&quot; : &quot;string&quot;,
+      &quot;constraint&quot; : &quot;one of the name/version pairs defined in the packaging-format-registry.json&quot;,
+      &quot;mandatory&quot;: true
+    }]
+  }
+}
+</code></pre></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../packaging-format-registry/packaging-format-registry/" class="btn btn-neutral float-left" title="Packaging Format Registry"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../examples/" class="btn btn-neutral float-right" title="Overview">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../packaging-format-registry/packaging-format-registry/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../examples/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

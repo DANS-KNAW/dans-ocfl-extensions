@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Collaboration - dans-ocfl-extensions</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Collaboration";
+        var mkdocs_page_input_path = "collaboration/index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> dans-ocfl-extensions
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">DANS OCFL Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../object-version-properties/object-version-properties/">Object Version Properties</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../packaging-format-registry/packaging-format-registry/">Packaging Format Registry</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../property-registry/property-registry/">Property Registry</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Examples</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../examples/">Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Collaboration</a>
+    <ul class="current">
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Context</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../arch/">⇒ DANS Data Station Architecture</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">dans-ocfl-extensions</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Examples &raquo;</li><li>Collaboration</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/DANS-KNAW/dans-ocfl-extensions/edit/master/docs/collaboration/index.md"> Edit on DANS-KNAW/dans-ocfl-extensions</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="example-collaboration-of-these-three-ocfl-extensions">EXAMPLE: Collaboration of these three OCFL Extensions<a class="headerlink" href="#example-collaboration-of-these-three-ocfl-extensions" title="Permanent link">&para;</a></h1>
+<p>This document describes a possible way to combine the three OCFL Extensions to achieve a way to prescribe the properties to be recorded and how to record them for each OCFL Object Version.</p>
+<div class="codehilite"><pre><span></span><code>[storage_root]
+  ├── 0=ocfl_1.0
+  ├── ocfl_1.0.txt
+  ├── ocfl_layout.json
+  ├── object-version-properties.md
+  ├── packaging-format-registry.md
+  ├── property-registry.md
+  ├── extensions
+  |   ├── property-registry/
+  |   |   └── config.json  
+  │   └── packaging-format-registry/
+  │       ├── config.json
+  |       ├── packaging_format_inventory.json
+  |       ├── packaging_format_inventory.json.sha512
+  │       └── packaging_formats
+  │           ├── 05b408a38e341de9bb4316aa812115ee 
+  │               └── ... files describing the packaging_format ...
+  │           └── 76f773808534f2969d7a405b99e78b11 
+  │               └── ... files describing the packaging_format ...  
+  ├── 0de
+  |   └── 45c
+  |       └── f24
+  |           └── item1
+  │               └── 0=ocfl_object_1.0
+  │                   ├── inventory.json
+  │                   ├── inventory.json.sha512
+  |                   └── extensions
+  │                       └── object-version-properties/
+  │                           ├── object_version_properties.json
+  │                           └── object_version_properties.json.sha512
+  └────────────────── v1/
+                      ├── inventory.json
+                      ├── inventory.json.sha512
+                      └── content/
+                          └── ... files ...
+</code></pre></div>
+
+<p>the config.json in the property-registry extension declares which storage-root extensions might be used in the object-version-properties.json in the object versions.</p>
+<div class="codehilite"><pre><span></span><code>{
+  &quot;archival-date&quot; : {
+      &quot;description&quot; : &quot;The date on which this Object Version has been archived in this repository&quot;
+      &quot;type&quot; : &quot;string&quot;, 
+      &quot;constraint&quot;: &quot;a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format&quot;,
+      &quot;mandatory&quot; : true
+  },
+  &quot;deaccessioned&quot; : {
+    &quot;description&quot; : &quot;If given, this version of the object has been deaccessioned and should not be disseminated&quot;,
+    &quot;type&quot; : &quot;object&quot;,
+    &quot;constraint&quot;: &quot;&quot;,
+    &quot;mandatory&quot; : false,
+    &quot;properties&quot; [{
+      &quot;name&quot; : &quot;datetime&quot;,
+      &quot;description&quot; : &quot;The date on which this object version has been deaccessioned&quot;,
+      &quot;type&quot; : &quot;string&quot;, 
+      &quot;constraint&quot;: &quot;a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format&quot;,
+      &quot;mandatory&quot; : true
+    }, {
+      &quot;name&quot; : &quot;reason&quot;,
+      &quot;description&quot;: &quot;The reason why this object version has been deaccessioned.&quot;,
+      &quot;type&quot; : &quot;string&quot;,
+      &quot;constraint&quot; : &quot;&quot;,
+      &quot;mandatory&quot;: true
+    }]
+  },
+  &quot;packaging-format&quot; : {
+    &quot;description&quot; : &quot;The packaging format of this Object Version&quot;,
+    &quot;type&quot; : &quot;object&quot;,
+    &quot;extension&quot; : &quot;packaging-format-registry&quot;,
+    &quot;mandatory&quot; : true,
+    &quot;properties&quot; : [{
+      &quot;description&quot; : &quot;the packaging format used for this object version&quot;,
+      &quot;type&quot; : &quot;string&quot;,
+      &quot;constraint&quot; : &quot;a name/version pair defined in the packaging-format-registry.json&quot;,
+      &quot;mandatory&quot;: true
+    }]
+  }
+}
+</code></pre></div>
+
+<p>and two examples of different possible instantiations of <code>object_version_properties.json</code></p>
+<div class="codehilite"><pre><span></span><code>{
+  &quot;v2&quot;: {
+    &quot;archival-date&quot; : &quot;2020-09-28T16:22:44&quot;,
+    &quot;packaging-format&quot;: &quot;BagIt/v0.97&quot;
+  },
+  &quot;v1&quot;: {
+    &quot;archival-date&quot; : &quot;2018-03-19T06:22:11&quot;,
+    &quot;packaging-format&quot;: &quot;BagIt/v0.97&quot;,
+    &quot;deaccessioned&quot;: {
+      &quot;datetime&quot;: &quot;2020-09-28T13:55:00&quot;,
+      &quot;reason&quot;: &quot;Deaccessioned because dataset was deleted in Easy&quot;
+    } 
+  }
+}
+</code></pre></div>
+
+<p>another example of <code>object_version_properties.json</code>:</p>
+<div class="codehilite"><pre><span></span><code>{
+  &quot;v1&quot;: {
+    &quot;archival-date&quot; : &quot;2002-07-12T15:14:33&quot;,
+    &quot;packaging-format&quot;: &quot;BagIt/v1.0&quot;    
+  }
+}
+</code></pre></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../examples/" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../arch/" class="btn btn-neutral float-right" title="⇒ DANS Data Station Architecture">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../examples/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../arch/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

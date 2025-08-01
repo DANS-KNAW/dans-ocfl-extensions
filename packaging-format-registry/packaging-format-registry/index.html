@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Packaging Format Registry - dans-ocfl-extensions</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Packaging Format Registry";
+        var mkdocs_page_input_path = "packaging-format-registry/packaging-format-registry.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> dans-ocfl-extensions
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">DANS OCFL Extensions</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../object-version-properties/object-version-properties/">Object Version Properties</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Packaging Format Registry</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#the-packaging-format-registry">The packaging format registry</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#packaging_format_inventoryjson">packaging_format_inventory.json</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#manifest-entry-properties-for-packaging_format_inventoryjson">manifest entry properties for packaging_format_inventory.json</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#implementation">Implementation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#registering-a-packaging-format-with-the-extension">Registering a packaging format with the extension</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#example">Example</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../property-registry/property-registry/">Property Registry</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/">Collaboration</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Context</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../arch/">⇒ DANS Data Station Architecture</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">dans-ocfl-extensions</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>DANS OCFL Extensions &raquo;</li><li>Packaging Format Registry</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/DANS-KNAW/dans-ocfl-extensions/edit/master/docs/packaging-format-registry/packaging-format-registry.md"> Edit on DANS-KNAW/dans-ocfl-extensions</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ocfl-extension-packaging-format-registry">OCFL Extension: Packaging Format Registry<a class="headerlink" href="#ocfl-extension-packaging-format-registry" title="Permanent link">&para;</a></h1>
+<ul>
+<li><strong>Extension Name:</strong> packaging-format-registry</li>
+<li><strong>Authors:</strong> Linda Reijnhoudt, Jan van Mansum</li>
+<li><strong>Minimum OCFL Version:</strong> 1.0</li>
+<li><strong>Status:</strong> DRAFT</li>
+</ul>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>In order for an OCFL Repository to be self-contained, it may want to explicitly define and declare the packaging format used for each OCFL Object Version. We
+broadly define "packaging format" as a set of rules about the way the content files of an OCFL Object Version are laid out, organized, and described. The
+registry is organized in a similar way to <a href="https://ocfl.github.io/extensions/0008-schema-registry.html" target="_blank">0008-schema-registry</a>.</p>
+<h2 id="the-packaging-format-registry">The packaging format registry<a class="headerlink" href="#the-packaging-format-registry" title="Permanent link">&para;</a></h2>
+<p>Each packaging format is described in a subdirectory of the <code>packaging_formats</code> directory in the storage root's extensions directory. These files may include
+documentation, examples, machine actionable code and other information about the packaging format. How to interpret these files is outside the scope of this
+extension.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<p>Configuration is done by setting values in the file <code>config.json</code> at the top level of the extension's directory. The keys expected are:</p>
+<ul>
+<li>
+<p>Name: <code>extensionName</code></p>
+<ul>
+<li>Description: String identifying the extension.</li>
+<li>Type: String</li>
+<li>Constraints: Must be packaging-format-registry.</li>
+<li>Default: packaging-format-registry</li>
+</ul>
+</li>
+<li>
+<p>Name: <code>packagingFormatDigestAlgorithm</code></p>
+<ul>
+<li>Description: Algorithm used for calculating safe filenames from packaging formats. Use <code>name</code>/<code>version</code> as input.</li>
+<li>Type: String</li>
+<li>Constraints: Must be a valid digest algorithm returning strings which are safe file names on the target file system.</li>
+<li>Default: md5</li>
+</ul>
+</li>
+<li>
+<p>Name: <code>digestAlgorithm</code></p>
+<ul>
+<li>Description: Digest algorithm used for calculating fixity of the packaging registry inventory.</li>
+<li>Type: String</li>
+<li>Constraints: Must be a valid digest algorithm.</li>
+<li>Default: The same value used elsewhere in the OCFL for integrity checking.</li>
+</ul>
+</li>
+</ul>
+<h2 id="packaging_format_inventoryjson">packaging_format_inventory.json<a class="headerlink" href="#packaging_format_inventoryjson" title="Permanent link">&para;</a></h2>
+<p>A manifest of the registered Packaging Formats must be maintained in <code>packaging_format_inventory.json</code>.</p>
+<ul>
+<li>Name: <code>manifest</code><ul>
+<li>Description: Object containing manifest entries.</li>
+<li>Type: Object</li>
+<li>Constraints: Must contain one entry per registered Packaging Format; may contain 3 sub-keys documented below. These entry names must be short enough to be
+  easily used to identify the packaging format.</li>
+<li>Default: Not applicable</li>
+</ul>
+</li>
+</ul>
+<h3 id="manifest-entry-properties-for-packaging_format_inventoryjson">manifest entry properties for <code>packaging_format_inventory.json</code><a class="headerlink" href="#manifest-entry-properties-for-packaging_format_inventoryjson" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Name: <code>name</code><ul>
+<li>Description: The human-readable name of the packaging format.</li>
+<li>Type: String</li>
+<li>Constraints: Not applicable</li>
+<li>Default: Not applicable</li>
+</ul>
+</li>
+<li>Name: <code>version</code><ul>
+<li>Description: Version of this packaging format.</li>
+<li>Type: String</li>
+<li>Constraints: The <code>name</code> and <code>version</code> together must be unique for the packaging formats in this storage root ``</li>
+<li>Default: Not applicable</li>
+</ul>
+</li>
+<li>Name: <code>summary</code><ul>
+<li>Description: Short description of the packaging format</li>
+<li>Type: String</li>
+<li>Constraints: Not applicable</li>
+<li>Default: Not applicable</li>
+</ul>
+</li>
+</ul>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<p>An OCFL Repository with this extension enabled can add extra information for each OCFL object/version that is added to the Repository. For every new OCFL
+object/version the Packaging Format for that object/version could be recorded.</p>
+<p>To add a new packaging format to the OCFL Root the packaging_format_inventory.json must be updated and the files describing the Packaging Format must be placed
+in the <code>packaging_formats</code> folder under that subfolder.</p>
+<p>A process could be implemented which ensures all OCFL objects/versions written are checked for packaging format references. Where not already registered, the
+packaging format must be documented and registered as described below. The packaging format is identified by the name and version referenced. The digest of the
+<code>name</code>/<code>version</code> (as configured by packagingFormatDigestAlgorithm) must be used as a filename. MD5 may be sufficient, other algorithms may be configured.</p>
+<p>The values of digestAlgorithm and packagingFormatDigestAlgorithm should not be changed once the registry is initialised. If changing the digest is unavoidable, all
+existing entries in the registry must be updated to the new algorithm(s).</p>
+<p>How this Packaging Format is recorded, is not specified in this extension. One possible way would be to use the OCFL extension <code>Object Version Properties</code>.</p>
+<p>When reading an OCFL Object Version the recorded Packaging Format can be consulted for more info on the packaging format of this version.</p>
+<h3 id="registering-a-packaging-format-with-the-extension">Registering a packaging format with the extension<a class="headerlink" href="#registering-a-packaging-format-with-the-extension" title="Permanent link">&para;</a></h3>
+<p>For each referenced packaging format in the OCFL object/versions:</p>
+<ul>
+<li>the entry in the storage_root extension is derived by hashing the <code>name</code>/<code>version</code> of the packaging format using the configured
+  <code>packagingFormatDigestAlgorithm</code>.</li>
+<li>the manifest object in the <code>packaging-format-registry.json</code> must be checked for this key.</li>
+<li>if this key is not already present in the registry:</li>
+<li>Documentation of the packaging format must be collected, and stored in the packaging format directory with the derived local filename.</li>
+<li>The packaging_format_inventory.json must updated:</li>
+<li>a new key must be created in the manifest object, with the defined properties.</li>
+<li>The packaging_format_inventory.json’s sidecar file must also be updated with the appropriate checksum.</li>
+</ul>
+<h2 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h2>
+<p>The packaging_format_inventory.json contains the manifest with the available OCFL Object Packaging Formats for this OCFL Repository.</p>
+<div class="codehilite"><pre><span></span><code>packaging_format_inventory.json
+{
+  &quot;manifest&quot; : {
+    &quot;76f773808534f2969d7a405b99e78b11&quot; : {
+      &quot;name&quot; : &quot;BagIt&quot;
+      &quot;version&quot; : &quot;v0.97&quot;
+      &quot;summary&quot; : &quot;a hierarchical file packaging format for storage and transfer of arbitrary digital content.&quot;
+    }, 
+    &quot;05b408a38e341de9bb4316aa812115ee&quot; : {
+      &quot;name&quot; : &quot;BagIt&quot;
+      &quot;version&quot; : &quot;v1.0&quot;
+      &quot;summary&quot; : &quot;https://datatracker.ietf.org/doc/html/rfc8493&quot;
+    }
+  }
+}
+</code></pre></div>
+
+<p>The storage root of the OCFL Repository would then look something like this:</p>
+<div class="codehilite"><pre><span></span><code>[storage_root]
+  ├── 0=ocfl_1.0
+  ├── ocfl_1.0.txt
+  ├── ocfl_layout.json
+  └── extensions
+      └── packaging-format-registry/
+          ├── config.json
+          ├── packaging_format_inventory.json
+          ├── packaging_format_inventory.json.sha512
+          └── packaging_formats
+              ├── 05b408a38e341de9bb4316aa812115ee
+              |   ├── rfc8493.txt
+              |   └── ... files describing the packaging_format BagIt/v1.0 ...
+              └── 76f773808534f2969d7a405b99e78b11                  
+                  └── ... files describing the packaging_format BagIt/v0.97 ...  
+</code></pre></div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../object-version-properties/object-version-properties/" class="btn btn-neutral float-left" title="Object Version Properties"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../property-registry/property-registry/" class="btn btn-neutral float-right" title="Property Registry">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../object-version-properties/object-version-properties/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../property-registry/property-registry/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
