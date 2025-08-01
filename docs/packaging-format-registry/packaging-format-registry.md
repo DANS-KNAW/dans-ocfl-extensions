@@ -80,7 +80,7 @@ A process could be implemented which ensures all OCFL objects/versions written a
 packaging format must be documented and registered as described below. The packaging format is identified by the name and version referenced. The digest of the
 `name`/`version` (as configured by packagingFormatDigestAlgorithm) must be used as a filename. MD5 may be sufficient, other algorithms may be configured.
 
-The values of digestAlgorithm and identifierDigestAlgorithm should not be changed once the registry is initialised. If changing the digest is unavoidable, all
+The values of digestAlgorithm and packagingFormatDigestAlgorithm should not be changed once the registry is initialised. If changing the digest is unavoidable, all
 existing entries in the registry must be updated to the new algorithm(s).
 
 How this Packaging Format is recorded, is not specified in this extension. One possible way would be to use the OCFL extension `Object Version Properties`.
