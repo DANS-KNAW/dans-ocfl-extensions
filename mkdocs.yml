@@ -22,12 +22,16 @@ repo_name: DANS-KNAW/dans-ocfl-extensions
 repo_url: https://github.com/DANS-KNAW/dans-ocfl-extensions
 
 nav:
-  - Welcome: index.md
-  - Object Version Properties: object-version-properties/object-version-properties.md
-  - Packaging Format Registry: packaging-format-registry/packaging-format-registry.md
-  - Property Registry: property-registry/property-registry.md
-  - Collaboration: collaboration/index.md
-  - ⇒ DANS Data Station Architecture: arch.md
+  - DANS OCFL Extensions:
+    - Overview: index.md
+    - Object Version Properties: object-version-properties/object-version-properties.md
+    - Packaging Format Registry: packaging-format-registry/packaging-format-registry.md
+    - Property Registry: property-registry/property-registry.md
+  - Examples:
+    - Overview: examples.md
+    - Collaboration: collaboration/index.md
+  - Context:
+    - ⇒ DANS Data Station Architecture: arch.md
 
 plugins:
   - markdownextradata

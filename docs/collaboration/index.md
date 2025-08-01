@@ -1,4 +1,4 @@
-# Collaboration of these three OCFL Extensions
+# EXAMPLE: Collaboration of these three OCFL Extensions
 
 This document describes a possible way to combine the three OCFL Extensions to achieve a way to prescribe the properties to be recorded and how to record them for each OCFL Object Version.
 

@@ -1,7 +1,7 @@
 # OCFL Extension: Property Registry
 
 - **Extension Name:** property-registry
-- **Authors:** 
+- **Authors:** Linda Reijnhoudt, Jan van Mansum
 - **Minimum OCFL Version:** 1.0
 - **Status:** DRAFT
 
