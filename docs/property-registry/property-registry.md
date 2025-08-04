@@ -1,4 +1,5 @@
-# OCFL Extension: Property Registry
+OCFL Extension: Property Registry
+=================================
 
 - **Extension Name:** property-registry
 - **Authors:** Linda Reijnhoudt, Jan van Mansum
@@ -120,27 +121,27 @@ with the following content for `property-registry/config.json`:
       "type": "string",
       "constraint": "a duration in ISO 8601 format, e.g. P1Y2M3D",
       "required": true
-  },
+    },
     "deaccessioned": {
       "description": "If present, this version of the object has been deaccessioned and should not be disseminated",
       "type": "object",
       "required": false,
       "properties": [
-      {
+        {
           "name": "datetime",
           "description": "The date on which this object version has been deaccessioned",
           "type": "string",
-        "constraint": "a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format",
+          "constraint": "a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format",
           "required": true
         },
         {
           "name": "reason",
-        "description": "The reason why this object version has been deaccessioned.",
+          "description": "The reason why this object version has been deaccessioned.",
           "type": "string",
           "constraint": "",
           "required": true
-      }
-    ]
+        }
+      ]
     }
   },
   "packagingFormat": {

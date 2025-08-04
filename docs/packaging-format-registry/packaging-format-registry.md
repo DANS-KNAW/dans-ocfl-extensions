@@ -19,7 +19,7 @@ items:
 * A `config.json` file containing the configuration parameters for the extension.
 * A `packaging_formats` directory containing one subdirectory for each packaging format.
 * A `packaging_format_inventory.json` file providing an index for the stored packaging format specifications.
-* A sidecar file `packaging_format_inventory.json.sha512` (or other configured digest) containing the digest of the `packaging_format_inventory.json` file, in  
+* A sidecar file `packaging_format_inventory.json.sha512` (or other configured digest) containing the digest of the `packaging_format_inventory.json` file, in
   the same manner as the OCFL inventory files.
 
 Parameters
@@ -140,7 +140,7 @@ The `packaging_format_inventory.json` file contains the manifest with the availa
       "name": "BagIt",
       "version": "v0.97",
       "summary": "a hierarchical file packaging format for storage and transfer of arbitrary digital content."
-    }, 
+    },
     "05b408a38e341de9bb4316aa812115ee": {
       "name": "BagIt",
       "version": "v1.0",
@@ -170,3 +170,5 @@ The storage root of the OCFL repository would then look something like this:
                   └── ... files describing the packaging_format BagIt/v0.97 ...  
   
 ```
+
+[0008-schema-registry]: {{ schema_registry_extension }}
