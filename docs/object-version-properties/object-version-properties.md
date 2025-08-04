@@ -1,26 +1,33 @@
-# OCFL Extension: Object Version Properties
+OCFL Extension: Object Version Properties
+=========================================
 
 - **Extension Name:** object-version-properties
 - **Authors:** Linda Reijnhoudt, Jan van Mansum
 - **Minimum OCFL Version:** 1.0
 - **Status:** DRAFT
 
-## Overview
+Overview
+--------
 
-This extension provides a way to record metadata on an OCFL object version that is not recorded in the content of object version itself. This may be useful for
-cases where additional information about the version is needed, which cannot conveniently be stored in the object itself in a standard way. Another use-case may
-be a property that is not available at the time the version content is created. This extension only describes how the properties should be recorded, it does not
-prescribe what properties should be recorded.
+This extension provides a way to record properties of an OCFL object version beyond the standard properties defined by OCFL itself (`created`, `message`, etc.).
+This may be useful for cases where additional information about the version is needed, which cannot conveniently be stored in the object itself in a standard
+way. Another use-case may be a property that is not available at the time the version content is created.
 
-## Object version properties
+This extension only describes how the properties should be recorded, it does not prescribe what properties should be recorded or their semantics. One way to
+define the semantics of properties is to use the [Property Registry extension](../property-registry/property-registry.md).
+
+The object_version_properties.json file
+---------------------------------------
 
 The object version properties are stored in a JSON file named `object_version_properties.json` in the extensions directory of the OCFL object. This file must
 contain entries for all versions in this object. Each version entry has as key the version identifier (e.g. `v1`, `v2`, etc.) and as value a JSON object with
-the properties for that version. If no properties are recorded for a version, the entry for that version must be an empty JSON object. The properties recorded
-under a version key pertain to that version only, so when a new version is created, properties that do not change must be copied from the previous version.
-Otherwise, this extension does restrict the properties that can be recorded, nor does it define their semantics.
+the properties for that version. If no properties are recorded for a version, the entry for that version must be an empty JSON object.
 
-## Implementation
+The properties recorded under a version key pertain to that version only, so when a new version is created, properties that do not change must be copied from
+the previous version. Otherwise, this extension does restrict the properties that can be recorded, nor does it define their semantics.
+
+Implementation
+--------------
 
 Clients that implement this extension must validate that the `object_version_properties.json` file is well-formed JSON and that it contains an entry for each
 version in the object as part of the validation of the OCFL object.
@@ -29,7 +36,8 @@ Clients may support storing the version properties when creating a new version o
 version creation method. Likewise, clients may support retrieving the properties for a specific version of an OCFL object as a properties map. Other optional
 features may include the ability to search for object versions based on their properties.
 
-## Examples
+Examples
+--------
 
 ### 1. Simple property
 
