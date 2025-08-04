@@ -33,6 +33,9 @@ nav:
   - Context:
     - ⇒ DANS Data Station Architecture: arch.md
 
+extra:
+  schema_registry_extension: https://ocfl.github.io/extensions/0008-schema-registry.html
+
 plugins:
   - markdownextradata
   - search
