@@ -89,5 +89,5 @@ If the repository wants to record a complex object for a version, for instance t
 }
 ```
 
-Note, that this example also demonstrates that a property that remain unchanged between versions (in this case "User-Agent") must be copied from the previous
+Note, that this example also demonstrates that a property that remains unchanged between versions (in this case "User-Agent") must be copied from the previous
 version.
