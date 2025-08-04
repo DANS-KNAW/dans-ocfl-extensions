@@ -71,7 +71,7 @@ Configuration is done by setting values in the file `config.json` at the top lev
 - Name: `default`
     - Description: The default value for the property, if any.
     - Type: Any valid JSON value of the type defined by the `type` key.
-    - Constraints: Must be a valid value for the property type.
+    - Constraints: Must be a valid value for the property type. May not be present if `required` is true.
     - Required: false.
     - Default: None.
 
@@ -119,7 +119,7 @@ with the following content for `property-registry/config.json`:
     "retentionEndDate": {
       "description": "the date until which this object version may be retained in this repository",
       "type": "string",
-      "constraint": "a duration in ISO 8601 format, e.g. P1Y2M3D",
+      "constraint": "a date in ISO 8601 format, e.g. 2030-10-01",
       "required": true
     },
     "deaccessioned": {
@@ -147,7 +147,7 @@ with the following content for `property-registry/config.json`:
   "packagingFormat": {
     "description": "The packaging format of the current object version, as defined in the packaging-format-registry",
     "type": "string",
-    "required": true,
+    "required": false,
     "default": "BagIt/v1.0"
   }
 }

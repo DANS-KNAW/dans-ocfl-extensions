@@ -25,8 +25,8 @@ nav:
   - DANS OCFL Extensions:
     - Overview: index.md
     - Object Version Properties: object-version-properties/object-version-properties.md
-    - Packaging Format Registry: packaging-format-registry/packaging-format-registry.md
     - Property Registry: property-registry/property-registry.md
+    - Packaging Format Registry: packaging-format-registry/packaging-format-registry.md
   - Examples:
     - Overview: examples.md
     - Collaboration: collaboration/index.md
