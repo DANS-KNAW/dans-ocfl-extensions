@@ -1,11 +1,13 @@
-# OCFL Extension: Packaging Format Registry
+OCFL Extension: Packaging Format Registry
+=========================================
 
 - **Extension Name:** packaging-format-registry
 - **Authors:** Linda Reijnhoudt, Jan van Mansum
 - **Minimum OCFL Version:** 1.0
 - **Status:** DRAFT
 
-## Overview
+Overview
+--------
 
 In order for an OCFL repository to be self-contained, it may want to explicitly specify the packaging formats used to package the content of object versions. We
 broadly define "packaging format" as a set of rules about the way the content files of an OCFL object version are laid out, organized, and described.
@@ -20,7 +22,8 @@ items:
 * A sidecar file `packaging_format_inventory.json.sha512` (or other configured digest) containing the digest of the `packaging_format_inventory.json` file, in
   the same manner as the OCFL inventory files.
 
-## Parameters
+Parameters
+----------
 
 Configuration is done by setting values in the file `config.json` at the top level of the extension's directory. The keys expected are:
 
@@ -42,7 +45,8 @@ Configuration is done by setting values in the file `config.json` at the top lev
     - Constraints: Must be a valid digest algorithm.
     - Default: The same value used elsewhere in the OCFL for integrity checking.
 
-## The packaging_formats directory
+The packaging_formats directory
+------------------------------- 
 
 The `packaging_formats` directory is located in the top directory of the `packaging-format-registry` extension. Each packaging format is described in a
 subdirectory of this `packaging_formats` directory. The name of this subdirectory must be the hexadecimal serialization of the digest of the string:
@@ -52,7 +56,8 @@ below). The digest algorithm used to calculate this digest is defined in the `co
 The subdirectory may include documentation, examples, machine actionable code and other information about the packaging format. How to interpret these files is
 outside the scope of this extension. The subdirectory may include other subdirectories, recursively.
 
-## The packaging_format_inventory.json file
+The packaging_format_inventory.json file
+----------------------------------------
 
 A manifest of the registered packaging formats must be maintained in `packaging_format_inventory.json`. This is a JSON with as top-level key `manifest`, which
 contains an object with one entry per registered packaging format.
@@ -85,7 +90,8 @@ contains an object with one entry per registered packaging format.
     - Constraints: Not applicable.
     - Default: Not applicable.
 
-## Implementation
+Implementation
+--------------
 
 ### Validation
 
@@ -120,7 +126,8 @@ recorded is outside the scope of this extension, but one possible way is to use
 the [DANS Object Version Properties extension](../object-version-properties/object-version-properties.md) to record the packaging format as a property of the
 object version. Other possibilities include using a designated version level metadata field, or a specific file in the object version content directory.
 
-## Example
+Example
+-------
 
 The `packaging_format_inventory.json` file contains the manifest with the available OCFL Object Packaging Formats for this OCFL Repository.
 
