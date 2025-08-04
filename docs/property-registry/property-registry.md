@@ -10,12 +10,13 @@ Overview
 --------
 
 This extension facilitates a way to define properties for an OCFL object. This extension only describes which properties could be recorded, and their
-definitions and structures. It does not prescribe how these are stored for objects or object versions.
+definitions and structures. It does not prescribe how these are stored for objects or object versions. One way to do this is to use
+the [Object Version Properties extension](../object-version-properties/object-version-properties.md).
 
 Parameters
 ----------
 
-Configuration is done by setting values in the file `config.json` at the top level of the extension's directory. The keys expected are:
+Configuration is done by setting values in the file `config.json` at the top level of the extension's directory. The expected key are:
 
 - Name: `extensionName`
     - Description: String identifying the extension.
@@ -24,19 +25,12 @@ Configuration is done by setting values in the file `config.json` at the top lev
     - Default: `property-registry`.
 
 - Name: `propertyRegistry`
-    - Description: An list of property descriptions, each describing a property that can be recorded for an OCFL object or object version.
-    - Type: Array of objects.
-    - Constraints: The objects must have at least the required properties as described below, at most extended with the optional properties.
+    - Description: An object with as keys the names of the properties, and as values property description entries as defined below.
+    - Type: Object.
+    - Constraints: The values must have at least the required properties as described below, at most extended with the optional properties.
     - Default: Empty array.
 
 ### Property description entry
-
-- Name: `name`
-    - Description: The name of the property.
-    - Type: String.
-    - Constraints: None.
-    - Required: true.
-    - Default: None.
 
 - Name: `description`
     - Description: A human-readable description of the property, explaining its purpose and usage.
@@ -61,27 +55,40 @@ Configuration is done by setting values in the file `config.json` at the top lev
 - Name: `properties`
     - Description: If the property is of type `object`, this key must be present and contain an object with as keys the names of the properties of the object,
       and as values property description entries as defined b
-    - Type: object.
+    - Type: Object.
     - Constraints: Each value in the object must be a property description entry as defined above.
     - Required: if `type` is `object`.
 
-## Implementation
+- Name: `required`
+    - Description: A boolean indicating whether this property is required.
+    - Type: Boolean.
+    - Constraints: None.
+    - Required: false.
+    - Default: false.
 
-Implementing software might check whether the extensions mentioned in the `config.json` are installed in the storage_root.
+Note, that the `array` type is not supported, as this would make validation of the property values more complex. The properties defined by means of this
+extension are intended to be fairly simple, and not to be used for complex data structures, which are better stored in the content files of the OCFL object.
 
-Implementing software might check whether the `config.json` is well-formed.
+Note also, that this extension does not define a generic way to validate the property values against the constraints.
 
-## Example
+Implementation
+--------------
 
-Three examples will be given:
+### Validation
 
-1. a simple property
-2. a complex property
-3. a complex property that uses another extension
+As part of the validation of the storage root, implementing software must check that the `config.json` is well-formed and contains the required keys and values
+as described above. It must also check that no other keys are present in the `config.json` file.
 
-### 1. a simple property
+### Registering a property with the property registry
 
-if the repository wants to record a simple property, for instance the archival date for each OCFL Object Version, it could achieve that in the following way:
+In order to register a property with the property registry, the implementing software must update the `config.json` file in the `property-registry` extension
+directory with a new property description entry.
+
+Examples
+--------
+
+The following example registry contains three properties, each demonstrating a different use case. The registry is stored in the `property-registry/config.json`
+file in the `extensions/property-registry` directory of the OCFL storage root.
 
 ```text
 [storage_root]
@@ -99,140 +106,56 @@ with the following content for `property-registry/config.json`:
 ```json
 {
   "extensionName": "property-registry",
-  "archival-date": {
-    "description": "The date on which this Object Version has been archived in this repository",
-    "type": "string",
-    "constraint": "a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format",
-    "mandatory": true
-  }
-}
-```
-
-### 2. a complex property
-
-if the repository wants to record a complex object for a version, for instance that it has been deaccessioned, this could be done with the same structure, but
-with a different content for `property-registry/config.json`:
-
-```json
-{
-  "extensionName": "property-registry",
-  "propertyRegistry": [
-    {
-      "name": "archival-date",
-      "description": "If given, this version of the object has been deaccessioned and should not be disseminated",
-      "type": "object",
-      "constraint"
-      ""
-      "mandatory": false,
-      "properties"
-    {
-      "name": "datetime"
-      "description": "The date on which this object version has been deaccessioned"
+  "propertyRegistry": {
+    "retentionEndDate": {
+      "description": "the date until which this Object Version must be retained in this repository",
       "type": "string",
-      "constraint": "a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format",
-      "mandatory": true
+      "constraint": "a duration in ISO 8601 format, e.g. P1Y2M3D",
+      "required": true
     },
-    {
-      "name": "reason",
-      "description": "The reason why this object version has been deaccessioned.",
-      "type": "string",
+    "deaccessioned": {
+      "description": "If present, this version of the object has been deaccessioned and should not be disseminated",
+      "type": "object",
       "constraint": "",
-      "mandatory": true
+      "required": false,
+      "properties": [
+        {
+          "name": "datetime",
+          "description": "The date on which this object version has been deaccessioned",
+          "type": "string",
+          "constraint": "a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format",
+          "required": true
+        },
+        {
+          "name": "reason",
+          "description": "The reason why this object version has been deaccessioned.",
+          "type": "string",
+          "constraint": "",
+          "required": true
+        }
+      ]
     }
-  ]
-}
-}
-}
-```
-
-### 3. a complex property that uses another extension
-
-If the property to be recorded is described in an extension, the `property-registry/config.json` would look like this:
-
-```
-{
-  "extensionName" : "property-registry",
-  "packaging-format" : {
-    "description" : "The packaging format of this Object Version",
-    "type" : "object",
-    "extension" : "packaging-format-registry",
-    "mandatory" : true
-    "properties" : [{
-      "description" : "the packaging format used for this object version",
-      "type" : "string",
-      "constraint" : "one of the name/version pairs in the packaging-format-registry.json",
-      "mandatory": true
-    }]
+  },
+  "packagingFormat": {
+    "description": "The packaging format of the current object version, as defined in the packaging-format-registry",
+    "type": "string",
+    "required": true
   }
 }
 ```
 
-### A storage_root with all the above examples implemented
+### `retentionEndDate` property
 
-```
-[storage_root]
-  ├── 0=ocfl_1.0
-  ├── ocfl_1.0.txt
-  ├── ocfl_layout.json
-  ├── property-registry.md
-  ├── packaging-format-registry.md
-  ├── extensions
-  |   ├── property-registry/
-  |   |   └── config.json  
-  │   └── packaging-format-registry/
-  │       ├── config.json
-  |       ├── packaging_format_inventory.json
-  |       ├── packaging_format_inventory.json.sha512
-  │       └── packaging_formats
-  │           ├── 05b408a38e341de9bb4316aa812115ee
-  │           |   └── ... files describing the packaging_format ...
-  │           └── 76f773808534f2969d7a405b99e78b11
-  │               └── ... files describing the packaging_format ...  
-```
+This is a simple string property that indicates the date until which this object version must be retained in the repository. It is required and must be in ISO
+8601 format.
 
-`property-registry/config.json` would then contain the following json:
+### `deaccessioned` property
 
-```
-{
-  "extensionName" : "property-registry",
-  "archival-date" : {
-      "description" : "The date on which this Object Version has been archived in this repository"
-      "type" : "string", 
-      "constraint": "a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format",
-      "mandatory" : true
-  },
-  "deaccessioned" : {
-    "description" : "If given, this version of the object has been deaccessioned and should not be disseminated",
-    "type" : "object",
-    "constraint": "",
-    "mandatory" : false,
-    "properties" [
-      {
-        "name" : "datetime",
-        "description" : "The date on which this object version has been deaccessioned",
-        "type" : "string", 
-        "constraint": "a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format",
-        "mandatory" : true
-      }, {
-        "name" : "reason",
-        "description": "The reason why this object version has been deaccessioned.",
-        "type" : "string",
-        "constraint" : "",
-        "mandatory": true
-      }
-    ]
-  },
-  "packaging-format" : {
-    "description" : "The packaging format of this Object Version",
-    "type" : "object",
-    "extension" : "packaging-format-registry",
-    "mandatory" : true,
-    "properties" : [{
-      "description" : "the packaging format used for this object version",
-      "type" : "string",
-      "constraint" : "one of the name/version pairs defined in the packaging-format-registry.json",
-      "mandatory": true
-    }]
-  }
-}
-```
+This is a structured property that doubles as a boolean flag. If present, it indicates that this object version has been deaccessioned and should not be
+disseminated. It also documents the date and reason for deaccessioning.
+
+### `packagingFormat` property
+
+This is a simple string property that indicates the packaging format of the current object version as defined in
+the [Packaging Format Registry extension](../packaging-format-registry/packaging-format-registry.md). It is required and must be a valid packaging format name
+as defined in that registry.
