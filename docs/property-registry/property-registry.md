@@ -9,14 +9,14 @@ OCFL Extension: Property Registry
 Overview
 --------
 
-This extension facilitates a way to define properties for an OCFL object. This extension only describes which properties could be recorded, and their
-definitions and structures. It does not prescribe how these are stored for objects or object versions. One way to do this is to use
-the [Object Version Properties extension](../object-version-properties/object-version-properties.md).
+This extension facilitates a way to define properties for an OCFL object. The registry described here only maintains a list of properties that could be used,
+and their definitions and structures. It does not prescribe how these properties are associated with items in the repository, such as object versions. One way
+to associate properties with object versions is to use the [Object Version Properties extension](../object-version-properties/object-version-properties.md).
 
 Parameters
 ----------
 
-Configuration is done by setting values in the file `config.json` at the top level of the extension's directory. The expected key are:
+Configuration is done by setting values in the file `config.json` at the top level of the extension's directory. The expected keys are:
 
 - Name: `extensionName`
     - Description: String identifying the extension.
@@ -30,7 +30,7 @@ Configuration is done by setting values in the file `config.json` at the top lev
     - Constraints: The values must have at least the required properties as described below, at most extended with the optional properties.
     - Default: Empty array.
 
-### Property description entry
+### Property description values
 
 - Name: `description`
     - Description: A human-readable description of the property, explaining its purpose and usage.
@@ -51,13 +51,15 @@ Configuration is done by setting values in the file `config.json` at the top lev
     - Type: String.
     - Constraints: None.
     - Required: false.
+    - Default: None.
 
 - Name: `properties`
-    - Description: If the property is of type `object`, this key must be present and contain an object with as keys the names of the properties of the object,
-      and as values property description entries as defined b
+    - Description: If the property is of type `object`, this key must be present and contain an object that has as keys the names of the properties of the object,
+      and as values property description values as defined in this paragraph.
     - Type: Object.
-    - Constraints: Each value in the object must be a property description entry as defined above.
+    - Constraints: Each value in the object must be a property description value as defined in this paragraph.
     - Required: if `type` is `object`.
+    - Default: None.
 
 - Name: `required`
     - Description: A boolean indicating whether this property is required.
@@ -65,6 +67,13 @@ Configuration is done by setting values in the file `config.json` at the top lev
     - Constraints: None.
     - Required: false.
     - Default: false.
+
+- Name: `default`
+    - Description: The default value for the property, if any.
+    - Type: Any valid JSON value of the type defined by the `type` key.
+    - Constraints: Must be a valid value for the property type.
+    - Required: false.
+    - Default: None.
 
 Note, that the `array` type is not supported, as this would make validation of the property values more complex. The properties defined by means of this
 extension are intended to be fairly simple, and not to be used for complex data structures, which are better stored in the content files of the OCFL object.
@@ -97,8 +106,8 @@ file in the `extensions/property-registry` directory of the OCFL storage root.
   ├── ocfl_layout.json
   ├── property-registry.md
   ├── extensions
-      └── property-registry/
-          └── config.json    
+  |   └── property-registry/
+  |       └── config.json    
 ```
 
 with the following content for `property-registry/config.json`:
@@ -108,7 +117,7 @@ with the following content for `property-registry/config.json`:
   "extensionName": "property-registry",
   "propertyRegistry": {
     "retentionEndDate": {
-      "description": "the date until which this Object Version must be retained in this repository",
+      "description": "the date until which this object version may be retained in this repository",
       "type": "string",
       "constraint": "a duration in ISO 8601 format, e.g. P1Y2M3D",
       "required": true
@@ -116,7 +125,6 @@ with the following content for `property-registry/config.json`:
     "deaccessioned": {
       "description": "If present, this version of the object has been deaccessioned and should not be disseminated",
       "type": "object",
-      "constraint": "",
       "required": false,
       "properties": [
         {
@@ -139,7 +147,8 @@ with the following content for `property-registry/config.json`:
   "packagingFormat": {
     "description": "The packaging format of the current object version, as defined in the packaging-format-registry",
     "type": "string",
-    "required": true
+    "required": true,
+    "default": "BagIt/v1.0"
   }
 }
 ```
