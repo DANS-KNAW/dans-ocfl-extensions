@@ -54,7 +54,8 @@ Configuration is done by setting values in the file `config.json` at the top lev
     - Default: None.
 
 - Name: `properties`
-    - Description: If the property is of type `object`, this key must be present and contain an object that has as keys the names of the properties of the object,
+    - Description: If the property is of type `object`, this key must be present and contain an object that has as keys the names of the properties of the
+      object,
       and as values property description values as defined in this paragraph.
     - Type: Object.
     - Constraints: Each value in the object must be a property description value as defined in this paragraph.
@@ -120,7 +121,7 @@ with the following content for `property-registry/config.json`:
       "description": "the date until which this object version may be retained in this repository",
       "type": "string",
       "constraint": "a date in ISO 8601 format, e.g. 2030-10-01",
-      "required": true
+      "required": false
     },
     "deaccessioned": {
       "description": "If present, this version of the object has been deaccessioned and should not be disseminated",
@@ -138,7 +139,6 @@ with the following content for `property-registry/config.json`:
           "name": "reason",
           "description": "The reason why this object version has been deaccessioned.",
           "type": "string",
-          "constraint": "",
           "required": true
         }
       ]
@@ -147,8 +147,14 @@ with the following content for `property-registry/config.json`:
   "packagingFormat": {
     "description": "The packaging format of the current object version, as defined in the packaging-format-registry",
     "type": "string",
+    "required": true
+  },
+  "personalDataPresent": {
+    "description": "Indicates whether this object version contains personal data",
+    "type": "string",
+    "constraint": "One of: 'yes', 'no', 'unknown'",
     "required": false,
-    "default": "BagIt/v1.0"
+    "default": "unknown"
   }
 }
 ```
@@ -168,3 +174,7 @@ disseminated. It also documents the date and reason for deaccessioning.
 This is a simple string property that indicates the packaging format of the current object version as defined in
 the [Packaging Format Registry extension](../packaging-format-registry/packaging-format-registry.md). It is required and must be a valid packaging format name
 as defined in that registry.
+
+### `personalDataPresent` property
+
+This is a simple string property that indicates whether this object version contains personal data. It is not required and defaults to "unknown".

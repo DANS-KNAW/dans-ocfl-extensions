@@ -70,7 +70,7 @@ object version.
       "description": "the date until which this object version may be retained in this repository",
       "type": "string",
       "constraint": "a date in ISO 8601 format, e.g. 2030-10-01",
-      "required": true
+      "required": false
     },
     "deaccessioned": {
       "description": "If present, this version of the object has been deaccessioned and should not be disseminated",

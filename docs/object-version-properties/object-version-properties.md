@@ -24,7 +24,7 @@ contain entries for all versions in this object. Each version entry has as key t
 the properties for that version. If no properties are recorded for a version, the entry for that version must be an empty JSON object.
 
 The properties recorded under a version key pertain to that version only, so when a new version is created, properties that do not change must be copied from
-the previous version. Otherwise, this extension does restrict the properties that can be recorded, nor does it define their semantics.
+the previous version. Otherwise, this extension does not restrict the properties that can be recorded, nor does it define their semantics.
 
 Implementation
 --------------
@@ -97,5 +97,5 @@ If the repository wants to record a complex object for a version, for instance t
 }
 ```
 
-Note, that this example also demonstrates that a property that remain unchanged between versions (in this case "User-Agent") must be copied from the previous
+Note, that this example also demonstrates that a property that remains unchanged between versions (in this case "User-Agent") must be copied from the previous
 version.
