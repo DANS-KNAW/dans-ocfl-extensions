@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Property Registry - dans-ocfl-extensions</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Property Registry";
+        var mkdocs_page_input_path = "property-registry/property-registry.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> dans-ocfl-extensions
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">DANS OCFL Extensions</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../..">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../object-version-properties/object-version-properties/">Object Version Properties</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Property Registry</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#property-description-values">Property description values</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#implementation">Implementation</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#validation">Validation</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#registering-a-property-with-the-property-registry">Registering a property with the property registry</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#retentionenddate-property">retentionEndDate property</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#deaccessioned-property">deaccessioned property</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#packagingformat-property">packagingFormat property</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#personaldatapresent-property">personalDataPresent property</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../packaging-format-registry/packaging-format-registry/">Packaging Format Registry</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Examples</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../examples/">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../collaboration/">Collaboration</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Context</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../arch/">⇒ DANS Data Station Architecture</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">dans-ocfl-extensions</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>DANS OCFL Extensions &raquo;</li><li>Property Registry</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/DANS-KNAW/dans-ocfl-extensions/edit/master/docs/property-registry/property-registry.md"> Edit on DANS-KNAW/dans-ocfl-extensions</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ocfl-extension-property-registry">OCFL Extension: Property Registry<a class="headerlink" href="#ocfl-extension-property-registry" title="Permanent link">&para;</a></h1>
+<ul>
+<li><strong>Extension Name:</strong> property-registry</li>
+<li><strong>Authors:</strong> Linda Reijnhoudt, Jan van Mansum</li>
+<li><strong>Minimum OCFL Version:</strong> 1.0</li>
+<li><strong>Status:</strong> DRAFT</li>
+</ul>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">&para;</a></h2>
+<p>This extension facilitates a way to define properties for an OCFL object. The registry described here only maintains a list of properties that could be used,
+and their definitions and structures. It does not prescribe how these properties are associated with items in the repository, such as object versions. One way
+to associate properties with object versions is to use the <a href="../../object-version-properties/object-version-properties/">Object Version Properties extension</a>.</p>
+<h2 id="parameters">Parameters<a class="headerlink" href="#parameters" title="Permanent link">&para;</a></h2>
+<p>Configuration is done by setting values in the file <code>config.json</code> at the top level of the extension's directory. The expected keys are:</p>
+<ul>
+<li>
+<p>Name: <code>extensionName</code></p>
+<ul>
+<li>Description: String identifying the extension.</li>
+<li>Type: String.</li>
+<li>Constraints: Must be <code>property-registry</code>.</li>
+<li>Default: <code>property-registry</code>.</li>
+</ul>
+</li>
+<li>
+<p>Name: <code>propertyRegistry</code></p>
+<ul>
+<li>Description: An object with as keys the names of the properties, and as values property description entries as defined below.</li>
+<li>Type: Object.</li>
+<li>Constraints: The values must have at least the required properties as described below, at most extended with the optional properties.</li>
+<li>Default: Empty array.</li>
+</ul>
+</li>
+</ul>
+<h3 id="property-description-values">Property description values<a class="headerlink" href="#property-description-values" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Name: <code>description</code></p>
+<ul>
+<li>Description: A human-readable description of the property, explaining its purpose and usage.</li>
+<li>Type: String.</li>
+<li>Constraints: None.</li>
+<li>Required: true.</li>
+<li>Default: None.</li>
+</ul>
+</li>
+<li>
+<p>Name: <code>type</code></p>
+<ul>
+<li>Description: The JSON type of the property.</li>
+<li>Type: String.</li>
+<li>Constraints: Must be one of: <code>number</code>, <code>string</code>, <code>boolean</code> or <code>object</code>. If <code>object</code>, the property must have a <code>properties</code> key defined.</li>
+<li>Required: true.</li>
+<li>Default: <code>string</code>.</li>
+</ul>
+</li>
+<li>
+<p>Name: <code>constraints</code></p>
+<ul>
+<li>Description: A human-readable description of the constraints on the property value, if any.</li>
+<li>Type: String.</li>
+<li>Constraints: None.</li>
+<li>Required: false.</li>
+<li>Default: None.</li>
+</ul>
+</li>
+<li>
+<p>Name: <code>properties</code></p>
+<ul>
+<li>Description: If the property is of type <code>object</code>, this key must be present and contain an object that has as keys the names of the properties of the
+  object,
+  and as values property description values as defined in this paragraph.</li>
+<li>Type: Object.</li>
+<li>Constraints: Each value in the object must be a property description value as defined in this paragraph.</li>
+<li>Required: if <code>type</code> is <code>object</code>.</li>
+<li>Default: None.</li>
+</ul>
+</li>
+<li>
+<p>Name: <code>required</code></p>
+<ul>
+<li>Description: A boolean indicating whether this property is required.</li>
+<li>Type: Boolean.</li>
+<li>Constraints: None.</li>
+<li>Required: false.</li>
+<li>Default: false.</li>
+</ul>
+</li>
+<li>
+<p>Name: <code>default</code></p>
+<ul>
+<li>Description: The default value for the property, if any.</li>
+<li>Type: Any valid JSON value of the type defined by the <code>type</code> key.</li>
+<li>Constraints: Must be a valid value for the property type. May not be present if <code>required</code> is true.</li>
+<li>Required: false.</li>
+<li>Default: None.</li>
+</ul>
+</li>
+</ul>
+<p>Note, that the <code>array</code> type is not supported, as this would make validation of the property values more complex. The properties defined by means of this
+extension are intended to be fairly simple, and not to be used for complex data structures, which are better stored in the content files of the OCFL object.</p>
+<p>Note also, that this extension does not define a generic way to validate the property values against the constraints.</p>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<h3 id="validation">Validation<a class="headerlink" href="#validation" title="Permanent link">&para;</a></h3>
+<p>As part of the validation of the storage root, implementing software must check that the <code>config.json</code> is well-formed and contains the required keys and values
+as described above. It must also check that no other keys are present in the <code>config.json</code> file.</p>
+<h3 id="registering-a-property-with-the-property-registry">Registering a property with the property registry<a class="headerlink" href="#registering-a-property-with-the-property-registry" title="Permanent link">&para;</a></h3>
+<p>In order to register a property with the property registry, the implementing software must update the <code>config.json</code> file in the <code>property-registry</code> extension
+directory with a new property description entry.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">&para;</a></h2>
+<p>The following example registry contains three properties, each demonstrating a different use case. The registry is stored in the <code>property-registry/config.json</code>
+file in the <code>extensions/property-registry</code> directory of the OCFL storage root.</p>
+<div class="codehilite"><pre><span></span><code>[storage_root]
+  ├── 0=ocfl_1.0
+  ├── ocfl_1.0.txt
+  ├── ocfl_layout.json
+  ├── property-registry.md
+  ├── extensions
+  |   └── property-registry/
+  |       └── config.json    
+</code></pre></div>
+
+<p>with the following content for <code>property-registry/config.json</code>:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;extensionName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;property-registry&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;propertyRegistry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;retentionEndDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;the date until which this object version may be retained in this repository&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;constraint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a date in ISO 8601 format, e.g. 2030-10-01&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;deaccessioned&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;If present, this version of the object has been deaccessioned and should not be disseminated&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The date on which this object version has been deaccessioned&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;constraint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;reason&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The reason why this object version has been deaccessioned.&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;packagingFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The packaging format of the current object version, as defined in the packaging-format-registry&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;personalDataPresent&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Indicates whether this object version contains personal data&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;constraint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;One of: &#39;yes&#39;, &#39;no&#39;, &#39;unknown&#39;&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;default&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;unknown&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="retentionenddate-property"><code>retentionEndDate</code> property<a class="headerlink" href="#retentionenddate-property" title="Permanent link">&para;</a></h3>
+<p>This is a simple string property that indicates the date until which this object version must be retained in the repository. It is required and must be in ISO
+8601 format.</p>
+<h3 id="deaccessioned-property"><code>deaccessioned</code> property<a class="headerlink" href="#deaccessioned-property" title="Permanent link">&para;</a></h3>
+<p>This is a structured property that doubles as a boolean flag. If present, it indicates that this object version has been deaccessioned and should not be
+disseminated. It also documents the date and reason for deaccessioning.</p>
+<h3 id="packagingformat-property"><code>packagingFormat</code> property<a class="headerlink" href="#packagingformat-property" title="Permanent link">&para;</a></h3>
+<p>This is a simple string property that indicates the packaging format of the current object version as defined in
+the <a href="../../packaging-format-registry/packaging-format-registry/">Packaging Format Registry extension</a>. It is required and must be a valid packaging format name
+as defined in that registry.</p>
+<h3 id="personaldatapresent-property"><code>personalDataPresent</code> property<a class="headerlink" href="#personaldatapresent-property" title="Permanent link">&para;</a></h3>
+<p>This is a simple string property that indicates whether this object version contains personal data. It is not required and defaults to "unknown".</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../object-version-properties/object-version-properties/" class="btn btn-neutral float-left" title="Object Version Properties"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../../packaging-format-registry/packaging-format-registry/" class="btn btn-neutral float-right" title="Packaging Format Registry">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../object-version-properties/object-version-properties/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../../packaging-format-registry/packaging-format-registry/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

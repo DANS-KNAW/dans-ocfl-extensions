@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>Collaboration - dans-ocfl-extensions</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Collaboration";
+        var mkdocs_page_input_path = "collaboration/index.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> dans-ocfl-extensions
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">DANS OCFL Extensions</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="..">Overview</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../object-version-properties/object-version-properties/">Object Version Properties</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../property-registry/property-registry/">Property Registry</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../packaging-format-registry/packaging-format-registry/">Packaging Format Registry</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Examples</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../examples/">Overview</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">Collaboration</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#repository-layout">Repository layout</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#content-of-the-extensions">Content of the extensions</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#property-registry">Property registry</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#packaging-format-registry">Packaging format registry</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#object-version-properties">Object version properties</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Context</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../arch/">⇒ DANS Data Station Architecture</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">dans-ocfl-extensions</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Examples &raquo;</li><li>Collaboration</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/DANS-KNAW/dans-ocfl-extensions/edit/master/docs/collaboration/index.md"> Edit on DANS-KNAW/dans-ocfl-extensions</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="collaboration-of-these-three-ocfl-extensions">Collaboration of these three OCFL Extensions<a class="headerlink" href="#collaboration-of-these-three-ocfl-extensions" title="Permanent link">&para;</a></h1>
+<p>This document gives an example of a way to combine the three OCFL extensions to achieve a way to prescribe the properties to be recorded and how to record them
+for each OCFL object version.</p>
+<h2 id="repository-layout">Repository layout<a class="headerlink" href="#repository-layout" title="Permanent link">&para;</a></h2>
+<p>In this example, the OCFL repository is structured as follows:</p>
+<div class="codehilite"><pre><span></span><code>[storage_root]
+  ├── 0=ocfl_1.0
+  ├── ocfl_1.0.txt
+  ├── ocfl_layout.json
+  ├── object-version-properties.md
+  ├── packaging-format-registry.md
+  ├── property-registry.md
+  ├── extensions
+  |   ├── property-registry/
+  |   |   └── config.json  
+  │   └── packaging-format-registry/
+  │       ├── config.json
+  |       ├── packaging_format_inventory.json
+  |       ├── packaging_format_inventory.json.sha512
+  │       └── packaging_formats
+  │           ├── 05b408a38e341de9bb4316aa812115ee 
+  │           │    └── ... files describing the packaging_format BagIt/v1.0 ...
+  │           ├── 76f773808534f2969d7a405b99e78b11 
+  │           │    └── ... files describing the packaging_format BagIt/v0.97 ...
+  │           └── 15e5e7397258f296a04219bce1defdff
+  │                └── ... files describing the packaging_format DANS BagPack Profile/v1.0.0 
+  ├── 0de
+  |   └── 45c
+  |       └── f24
+  |           └── item1
+  │               └── 0=ocfl_object_1.0
+  │                   ├── inventory.json
+  │                   ├── inventory.json.sha512
+  |                   └── extensions
+  │                       └── object-version-properties/
+  │                           ├── object_version_properties.json
+  │                           └── object_version_properties.json.sha512
+  ├────────────────── v1/
+  │                   ├── inventory.json
+  │                   ├── inventory.json.sha512
+  │                   └── content/
+  │                        └── ... files ...
+  │
+  ├────────────────── v2/
+  │                   ├── inventory.json
+  │                   ├── inventory.json.sha512
+  │                   └── content/
+  │                        └── ... files ...
+</code></pre></div>
+
+<h2 id="content-of-the-extensions">Content of the extensions<a class="headerlink" href="#content-of-the-extensions" title="Permanent link">&para;</a></h2>
+<h3 id="property-registry">Property registry<a class="headerlink" href="#property-registry" title="Permanent link">&para;</a></h3>
+<p>The <code>config.json</code> file in the property-registry extension declares the properties that can be used in the <code>object_version_properties.json</code> file of an OCFL
+object version.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;extensionName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;property-registry&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;propertyRegistry&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;retentionEndDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;the date until which this object version may be retained in this repository&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;constraint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a date in ISO 8601 format, e.g. 2030-10-01&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;deaccessioned&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;If present, this version of the object has been deaccessioned and should not be disseminated&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;object&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The date on which this object version has been deaccessioned&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;constraint&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">          </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;reason&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The reason why this object version has been deaccessioned.&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">          </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">]</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;packagingFormat&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;description&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;The packaging format of the current object version, as defined in the packaging-format-registry&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;string&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;required&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<h3 id="packaging-format-registry">Packaging format registry<a class="headerlink" href="#packaging-format-registry" title="Permanent link">&para;</a></h3>
+<p>The <code>config.json</code> file in the packaging-format-registry extension defines how to document the available OCFL Object Packaging Formats.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;extensionName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;packaging-format-registry&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;digestAlgorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sha512&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;packagingFormatDigestAlgorithm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;md5&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The <code>packaging_format_inventory.json</code> file in the packaging-format-registry extension contains the manifest with the available OCFL Object Packaging Formats for
+this OCFL Repository.</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;manifest&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;76f773808534f2969d7a405b99e78b11&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BagIt&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v0.97&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;a hierarchical file packaging format for storage and transfer of arbitrary digital content.&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;05b408a38e341de9bb4316aa812115ee&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;BagIt&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1.0&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://datatracker.ietf.org/doc/html/rfc8493&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;15e5e7397258f296a04219bce1defdff&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DANS BagPack Profile&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v1.0.0&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;summary&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;A DANS specific profile for the BagPack packaging format.&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>The names of the manifest entries are the digests of <code>name</code> + <code>/</code> + <code>version</code> of the packaging format, using the <code>digestAlgorithm</code> defined in the <code>config.json</code>,
+e.g.,</p>
+<div class="codehilite"><pre><span></span><code>echo -n &quot;BagIt/v1.0&quot; | md5sum # Output: 05b408a38e341de9bb4316aa812115ee
+</code></pre></div>
+
+<p>The files documenting the packaging formats are stored in the subdirectories with the same names.</p>
+<h3 id="object-version-properties">Object version properties<a class="headerlink" href="#object-version-properties" title="Permanent link">&para;</a></h3>
+<p>If the object in the example repository had two versions the <code>object_version_properties.json</code> file might look like this:</p>
+<div class="codehilite"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;v2&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;retentionEndDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2071-03-18&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;packaging-format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DANS BagPack Profile/v1.0.0&quot;</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;v1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;retentionEndDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2071-03-18&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;packaging-format&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;DANS BagPack Profile/v1.0.0&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;deaccessioned&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2025-12-31T13:55:00&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Deaccessioned because confidential data was removed&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Both versions have a <code>retentionEndDate</code> of <code>2071-03-18</code>, which is the date until which this object version may be retained in this repository. Both are packaged
+using the <code>DANS BagPack Profile/v1.0.0</code> packaging format, which is defined in the packaging-format-registry extension. The first version was deaccessioned on
+<code>2025-12-31T13:55:00</code> because confidential data was removed, and should not be disseminated.</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../examples/" class="btn btn-neutral float-left" title="Overview"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../arch/" class="btn btn-neutral float-right" title="⇒ DANS Data Station Architecture">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../examples/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../arch/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme_extra.js" defer></script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
