@@ -55,8 +55,7 @@ Configuration is done by setting values in the file `config.json` at the top lev
 
 - Name: `properties`
     - Description: If the property is of type `object`, this key must be present and contain an object that has as keys the names of the properties of the
-      object,
-      and as values property description values as defined in this paragraph.
+      object, and as values property description values as defined in this paragraph.
     - Type: Object.
     - Constraints: Each value in the object must be a property description value as defined in this paragraph.
     - Required: if `type` is `object`.
@@ -127,34 +126,33 @@ with the following content for `property-registry/config.json`:
       "description": "If present, this version of the object has been deaccessioned and should not be disseminated",
       "type": "object",
       "required": false,
-      "properties": [
-        {
-          "name": "datetime",
+      "properties": {
+        "datetime": {
           "description": "The date on which this object version has been deaccessioned",
           "type": "string",
           "constraint": "a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format",
           "required": true
         },
-        {
+        "reason": {
           "name": "reason",
           "description": "The reason why this object version has been deaccessioned.",
           "type": "string",
           "required": true
         }
-      ]
+      }
+    },
+    "packagingFormat": {
+      "description": "The packaging format of the current object version, as defined in the packaging-format-registry",
+      "type": "string",
+      "required": true
+    },
+    "personalDataPresent": {
+      "description": "Indicates whether this object version contains personal data",
+      "type": "string",
+      "constraint": "One of: 'yes', 'no', 'unknown'",
+      "required": false,
+      "default": "unknown"
     }
-  },
-  "packagingFormat": {
-    "description": "The packaging format of the current object version, as defined in the packaging-format-registry",
-    "type": "string",
-    "required": true
-  },
-  "personalDataPresent": {
-    "description": "Indicates whether this object version contains personal data",
-    "type": "string",
-    "constraint": "One of: 'yes', 'no', 'unknown'",
-    "required": false,
-    "default": "unknown"
   }
 }
 ```
