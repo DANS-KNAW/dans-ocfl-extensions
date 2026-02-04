@@ -128,10 +128,10 @@ with the following content for `property-registry/config.json`:
       "required": false,
       "properties": {
         "datetime": {
-          "description": "The date on which this object version has been deaccessioned",
+          "description": "The timestamp when the deaccessioning of the object version was registered in the OCFL repository. If not present, unknown.",
           "type": "string",
           "constraint": "a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format",
-          "required": true
+          "required": false
         },
         "reason": {
           "name": "reason",
