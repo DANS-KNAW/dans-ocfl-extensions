@@ -75,10 +75,10 @@ Configuration is done by setting values in the file `config.json` at the top lev
     - Required: false.
     - Default: None.
 
-Note, that the `array` type is not supported, as this would make validation of the property values more complex. The properties defined by means of this
-extension are intended to be fairly simple, and not to be used for complex data structures, which are better stored in the content files of the OCFL object.
+Note, that the `array` type is not supported, as this would make validation of the property values more complex. The properties defined by this extension are
+intended to be fairly simple and not to be used for complex data structures, which are better stored in the content files of the OCFL object.
 
-Note also, that this extension does not define a generic way to validate the property values against the constraints.
+Note also that this extension does not define a generic way to validate the property values against the constraints.
 
 Implementation
 --------------
@@ -134,7 +134,6 @@ with the following content for `property-registry/config.json`:
           "required": false
         },
         "reason": {
-          "name": "reason",
           "description": "The reason why this object version has been deaccessioned.",
           "type": "string",
           "required": true
@@ -159,8 +158,8 @@ with the following content for `property-registry/config.json`:
 
 ### `retentionEndDate` property
 
-This is a simple string property that indicates the date until which this object version must be retained in the repository. It is required and must be in ISO
-8601 format.
+This is a simple string property that indicates the date until which this object version must be retained in the repository. It is not required and must be in
+ISO 8601 format.
 
 ### `deaccessioned` property
 
