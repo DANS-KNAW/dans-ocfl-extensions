@@ -22,6 +22,12 @@ items:
 * A sidecar file `packaging_format_inventory.json.sha512` (or other configured digest) containing the digest of the `packaging_format_inventory.json` file, in
   the same manner as the OCFL inventory files.
 
+Schemas
+-------
+
+- `config.json` schema: `../schemas/packaging-format-registry-config.schema.json`
+- `packaging_format_inventory.json` schema: `../schemas/packaging_format_inventory.schema.json`
+
 Parameters
 ----------
 
@@ -170,5 +176,18 @@ The storage root of the OCFL repository would then look something like this:
                   └── ... files describing the packaging_format BagIt/v0.97 ...  
   
 ```
+
+Conformance
+-----------
+
+- MUST:
+  - `config.json` include `extensionName`, `packagingFormatDigestAlgorithm`, and `digestAlgorithm` and conform to the schema.
+  - `packaging_format_inventory.json` include a top-level `manifest` object whose entries conform to the schema.
+  - Maintain a one-to-one correspondence between manifest entries and directories under `packaging_formats/`.
+  - Use digest algorithms from the supported set (`md5`, `sha1`, `sha256`, `sha512`).
+- SHOULD:
+  - Validate JSON files against the published schemas.
+- MAY:
+  - Include additional documentation within each packaging format directory.
 
 [0008-schema-registry]: {{ schema_registry_extension }}

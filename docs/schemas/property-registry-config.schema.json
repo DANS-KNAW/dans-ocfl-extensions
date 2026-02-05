@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://schemas.dans.knaw.nl/ocfl/extensions/property-registry/config.schema.json",
+  "title": "Property Registry config.json",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "extensionName": {"const": "property-registry"},
+    "propertyRegistry": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/definitions/propertyDescription"}
+    }
+  },
+  "required": ["extensionName", "propertyRegistry"],
+  "definitions": {
+    "propertyDescription": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "description": {"type": "string"},
+        "type": {"type": "string", "enum": ["number", "string", "boolean", "object"]},
+        "constraints": {"type": "string"},
+        "required": {"type": "boolean"},
+        "default": {},
+        "properties": {
+          "type": "object",
+          "additionalProperties": {"$ref": "#/definitions/propertyDescription"}
+        }
+      },
+      "required": ["description", "type"],
+      "allOf": [
+        {
+          "if": {"properties": {"type": {"const": "object"}}, "required": ["type"]},
+          "then": {"required": ["properties"]}
+        },
+        {
+          "if": {"properties": {"required": {"const": true}}, "required": ["required"]},
+          "then": {"not": {"required": ["default"]}}
+        }
+      ]
+    }
+  }
+}

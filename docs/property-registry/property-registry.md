@@ -28,7 +28,7 @@ Configuration is done by setting values in the file `config.json` at the top lev
     - Description: An object with as keys the names of the properties, and as values property description entries as defined below.
     - Type: Object.
     - Constraints: The values must have at least the required properties as described below, at most extended with the optional properties.
-    - Default: Empty array.
+    - Default: `{}`.
 
 ### Property description values
 
@@ -80,13 +80,19 @@ intended to be fairly simple and not to be used for complex data structures, whi
 
 Note also that this extension does not define a generic way to validate the property values against the constraints.
 
+Schemas
+-------
+
+- `config.json` schema: `../schemas/property-registry-config.schema.json`
+
 Implementation
 --------------
 
 ### Validation
 
 As part of the validation of the storage root, implementing software must check that the `config.json` is well-formed and contains the required keys and values
-as described above. It must also check that no other keys are present in the `config.json` file.
+as described above. It must also check that no other keys are present in the `config.json` file. Implementations SHOULD validate `config.json` against the JSON
+Schema linked above.
 
 ### Registering a property with the property registry
 
@@ -96,7 +102,7 @@ directory with a new property description entry.
 Examples
 --------
 
-The following example registry contains three properties, each demonstrating a different use case. The registry is stored in the `property-registry/config.json`
+The following example registry contains four properties, each demonstrating a different use case. The registry is stored in the `property-registry/config.json`
 file in the `extensions/property-registry` directory of the OCFL storage root.
 
 ```text
@@ -119,7 +125,7 @@ with the following content for `property-registry/config.json`:
     "retentionEndDate": {
       "description": "the date until which this object version may be retained in this repository",
       "type": "string",
-      "constraint": "a date in ISO 8601 format, e.g. 2030-10-01",
+      "constraints": "a date in ISO 8601 format, e.g. 2030-10-01",
       "required": false
     },
     "deaccessioned": {
@@ -130,7 +136,7 @@ with the following content for `property-registry/config.json`:
         "datetime": {
           "description": "The timestamp when the deaccessioning of the object version was registered in the OCFL repository. If not present, unknown.",
           "type": "string",
-          "constraint": "a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format",
+          "constraints": "a datetime in ISO 8601 YYYY-MM-DDTHH-mm-ss format",
           "required": false
         },
         "reason": {
@@ -148,7 +154,7 @@ with the following content for `property-registry/config.json`:
     "personalDataPresent": {
       "description": "Indicates whether this object version contains personal data",
       "type": "string",
-      "constraint": "One of: 'yes', 'no', 'unknown'",
+      "constraints": "One of: 'yes', 'no', 'unknown'",
       "required": false,
       "default": "unknown"
     }
@@ -175,3 +181,17 @@ as defined in that registry.
 ### `personalDataPresent` property
 
 This is a simple string property that indicates whether this object version contains personal data. It is not required and defaults to "unknown".
+
+Conformance
+-----------
+
+- MUST:
+  - `config.json` contain only `extensionName` and `propertyRegistry`.
+  - `extensionName` be exactly `property-registry`.
+  - Each property description include `description` and `type` and follow the rules outlined above.
+  - Object-typed properties MUST declare `properties` as an object mapping their child properties.
+  - If a property is `required: true`, it MUST NOT specify a `default`.
+- SHOULD:
+  - Implementations validate `config.json` against the published JSON Schema.
+- MAY:
+  - Include human-readable `constraints` strings for guidance.

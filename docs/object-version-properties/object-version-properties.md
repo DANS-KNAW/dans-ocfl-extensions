@@ -22,6 +22,11 @@ The object-version-properties extension is implemented by creating and maintaini
 * A sidecar file `object_version_properties.json.sha512` (or other configured digest) containing the digest of the `object_version_properties.json` file, in
   the same manner as the OCFL inventory files. The digest algorithm must be the same as the one used for the OCFL inventory files.
 
+Schemas
+-------
+
+- `object_version_properties.json` schema: `../schemas/object-version-properties.schema.json`
+
 The object_version_properties.json file
 ---------------------------------------
 
@@ -29,14 +34,18 @@ The object version properties are stored in a JSON file named `object_version_pr
 contain entries for all versions in this object. Each version entry has as key the version identifier (e.g. `v1`, `v2`, etc.) and as value a JSON object with
 the properties for that version. If no properties are recorded for a version, the entry for that version must be an empty JSON object.
 
-The properties recorded under a version key pertain to that version only, so when a new version is created, properties that do not change must be copied from
-the previous version. Otherwise, this extension does not restrict the properties that can be recorded, nor does it define their semantics.
+The version keys MUST match the version identifiers used in the object's `inventory.json` (e.g. `v1`, `v2`, ...). Implementations MUST ensure a one-to-one
+correspondence: for every version present in the inventory there MUST be an entry in `object_version_properties.json` with the same version key.
+
+The properties recorded under a version key pertain to that version only, so when a new version is created, properties that do not change MUST be copied from
+the previous version. This duplication is REQUIRED for compatibility with systems that compute the current state by reading only the entry corresponding to the
+current version.
 
 Implementation
 --------------
 
 Clients that implement this extension must validate that the `object_version_properties.json` file is well-formed JSON and that it contains an entry for each
-version in the object as part of the validation of the OCFL object.
+version in the object as part of the validation of the OCFL object. Clients SHOULD validate the JSON against the schema linked above.
 
 Clients may support storing the version properties when creating a new version of an OCFL object, by passing the properties map as an extra parameter to the
 version creation method. Likewise, clients may support retrieving the properties for a specific version of an OCFL object as a properties map. Other optional
@@ -105,3 +114,15 @@ If the repository wants to record a complex object for a version, for instance t
 
 Note, that this example also demonstrates that a property that remains unchanged between versions (in this case "User-Agent") must be copied from the previous
 version.
+
+Conformance
+-----------
+
+- MUST:
+  - Use version keys that match the OCFL inventory version identifiers exactly (e.g. `v1`, `v2`, ...).
+  - Include an entry for every version present in the OCFL object's inventory.
+  - Duplicate unchanged properties into the new version entry when creating a new version.
+- SHOULD:
+  - Validate `object_version_properties.json` against the published JSON Schema.
+- MAY:
+  - Provide search functionality over version properties.
