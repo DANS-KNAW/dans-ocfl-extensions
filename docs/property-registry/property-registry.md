@@ -83,7 +83,7 @@ Note also that this extension does not define a generic way to validate the prop
 Schemas
 -------
 
-- `config.json` schema: `../schemas/property-registry-config.schema.json`
+- `config.json` schema: [property-registry-config.schema.json](../schemas/property-registry-config.schema.json){:target=_blank}
 
 Implementation
 --------------

@@ -25,8 +25,8 @@ items:
 Schemas
 -------
 
-- `config.json` schema: `../schemas/packaging-format-registry-config.schema.json`
-- `packaging_format_inventory.json` schema: `../schemas/packaging_format_inventory.schema.json`
+- `config.json` schema: [packaging-format-registry-config.schema.json](../schemas/packaging-format-registry-config.schema.json){:target=_blank}
+- `packaging_format_inventory.json` schema: [packaging_format_inventory.schema.json](../schemas/packaging_format_inventory.schema.json){:target=_blank}
 
 Parameters
 ----------

@@ -25,7 +25,7 @@ The object-version-properties extension is implemented by creating and maintaini
 Schemas
 -------
 
-- `object_version_properties.json` schema: `../schemas/object-version-properties.schema.json`
+- `object_version_properties.json` schema: [object-version-properties.schema.json](../schemas/object-version-properties.schema.json){:target=_blank}
 
 The object_version_properties.json file
 ---------------------------------------
