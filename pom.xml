@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Copyright (C) 2026 DANS - Data Archiving and Networked Services (info@dans.knaw.nl)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>nl.knaw.dans</groupId>
+        <artifactId>dd-parent</artifactId>
+        <version>1.11.0</version>
+        <relativePath />
+    </parent>
+
+    <artifactId>dans-ocfl-extensions</artifactId>
+    <version>0.1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>DANS OCFL Extensions documentation resources</name>
+    <description>Resource JAR containing the OCFL extensions documentation site content (MkDocs stays as-is).</description>
+    <inceptionYear>2026</inceptionYear>
+    <scm>
+        <developerConnection>scm:git:ssh://github.com/DANS-KNAW/dans-ocfl-extensions</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <build>
+        <resources>
+            <!-- Package everything in docs/ into the JAR under the root -->
+            <resource>
+                <directory>docs</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*</include>
+                </includes>
+            </resource>
+            <!-- Include top-level files that might be useful as resources -->
+            <resource>
+                <directory>.</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>README.md</include>
+                    <include>LICENSE</include>
+                    <include>mkdocs.yml</include>
+                </includes>
+            </resource>
+        </resources>
+        <plugins>
+            <!-- Use maven-jar-plugin as configured in dd-parent; no overrides needed for a resource-only jar -->
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+            <!-- Ensure license plugin and build-resources run with parent defaults -->
+            <plugin>
+                <groupId>nl.knaw.dans</groupId>
+                <artifactId>dans-build-resources-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <configuration combine.children="append">
+                    <excludes combine.children="append">
+                        <exclude>docs/**</exclude>
+                        <exclude>.venv-mkdocs/**</exclude>
+                        <exclude>target/**</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <id>DANS</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <url>https://maven.dans.knaw.nl/releases</url>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>DANS</id>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <url>https://maven.dans.knaw.nl/releases</url>
+        </pluginRepository>
+    </pluginRepositories>
+</project>
+
