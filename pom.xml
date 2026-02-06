@@ -104,6 +104,67 @@
                     </excludes>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>rewrite-markdown-cross-links</id>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <target>
+                                <mkdir dir="${project.build.outputDirectory}/extension-docs"/>
+                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md"
+                                               match="\(\.\./object-version-properties/object-version-properties\.md\)"
+                                               replace="(object-version-properties.md)"
+                                               byline="true"/>
+                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md"
+                                               match="\(\.\./property-registry/property-registry\.md\)"
+                                               replace="(property-registry.md)"
+                                               byline="true"/>
+                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/property-registry.md"
+                                               match="\(\.\./packaging-format-registry/packaging-format-registry\.md\)"
+                                               replace="(packaging-format-registry.md)"
+                                               byline="true"/>
+                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/property-registry.md"
+                                               match="\(\.\./object-version-properties/object-version-properties\.md\)"
+                                               replace="(object-version-properties.md)"
+                                               byline="true"/>
+                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/object-version-properties.md"
+                                               match="\(\.\./property-registry/property-registry\.md\)"
+                                               replace="(property-registry.md)"
+                                               byline="true"/>
+                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/object-version-properties.md"
+                                               match="\(\.\./packaging-format-registry/packaging-format-registry\.md\)"
+                                               replace="(packaging-format-registry.md)"
+                                               byline="true"/>
+                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/object-version-properties.md"
+                                               match="\(\.\./property-registry/property-registry\.md\)"
+                                               replace="(property-registry.md)"
+                                               byline="true"/>
+                                <!-- Remove {:target="_blank"} from all links -->
+                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md"
+                                               match="\s*\{\:target=_blank\}"
+                                               replace=""
+                                               byline="true"/>
+                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/property-registry.md"
+                                               match="\s*\{\:target=_blank\}"
+                                               replace=""
+                                               byline="true"/>
+                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/object-version-properties.md"
+                                               match="\s*\{\:target=_blank\}"
+                                               replace=""
+                                               byline="true"/>
+
+                            </target>
+                        </configuration>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
