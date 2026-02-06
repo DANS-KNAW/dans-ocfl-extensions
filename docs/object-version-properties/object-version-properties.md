@@ -13,7 +13,7 @@ This extension provides a way to record properties of an OCFL object version bey
 This may be useful for cases where additional information about the version is needed, which cannot conveniently be stored in the object itself in a standard
 way. Another use-case may be a property that is not available at the time the version content is created.
 
-This extension only describes how the properties should be recorded, it does not prescribe what properties should be recorded or their semantics. One way to
+This extension only describes how the properties should be recorded; it does not prescribe what properties should be recorded or their semantics. One way to
 define the semantics of properties is to use the [Property Registry extension](../property-registry/property-registry.md).
 
 The object-version-properties extension is implemented by creating and maintaining the following items:

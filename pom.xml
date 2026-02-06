@@ -42,34 +42,56 @@
 
     <build>
         <resources>
-            <!-- Package everything in docs/ into the JAR under the root -->
+            <!-- Place the extension Markdown docs under extension-docs/ in the JAR -->
             <resource>
-                <directory>docs</directory>
+                <directory>docs/object-version-properties</directory>
                 <filtering>false</filtering>
+                <targetPath>extension-docs</targetPath>
                 <includes>
-                    <include>**/*</include>
+                    <include>object-version-properties.md</include>
                 </includes>
             </resource>
-            <!-- Include top-level files that might be useful as resources -->
             <resource>
-                <directory>.</directory>
+                <directory>docs/packaging-format-registry</directory>
                 <filtering>false</filtering>
+                <targetPath>extension-docs</targetPath>
                 <includes>
-                    <include>README.md</include>
-                    <include>LICENSE</include>
-                    <include>mkdocs.yml</include>
+                    <include>packaging-format-registry.md</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>docs/property-registry</directory>
+                <filtering>false</filtering>
+                <targetPath>extension-docs</targetPath>
+                <includes>
+                    <include>property-registry.md</include>
+                </includes>
+            </resource>
+            <!-- Place all schema JSON files under schemas/ in the JAR -->
+            <resource>
+                <directory>docs/schemas</directory>
+                <filtering>false</filtering>
+                <targetPath>schemas</targetPath>
+                <includes>
+                    <include>object-version-properties.schema.json</include>
+                    <include>packaging-format-registry-config.schema.json</include>
+                    <include>packaging_format_inventory.schema.json</include>
+                    <include>property-registry-config.schema.json</include>
                 </includes>
             </resource>
         </resources>
         <plugins>
-            <!-- Use maven-jar-plugin as configured in dd-parent; no overrides needed for a resource-only jar -->
+            <!-- Override jar contents to include only desired resource paths -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-            </plugin>
-            <!-- Ensure license plugin and build-resources run with parent defaults -->
-            <plugin>
-                <groupId>nl.knaw.dans</groupId>
-                <artifactId>dans-build-resources-maven-plugin</artifactId>
+                <configuration>
+                    <includes>
+                        <include>extension-docs/**</include>
+                        <include>schemas/**</include>
+                        <include>META-INF/**</include>
+                    </includes>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>com.mycila</groupId>
