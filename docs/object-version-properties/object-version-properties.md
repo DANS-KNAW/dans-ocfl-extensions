@@ -4,7 +4,7 @@ OCFL Extension: Object Version Properties
 - **Extension Name:** object-version-properties
 - **Authors:** Linda Reijnhoudt, Jan van Mansum
 - **Minimum OCFL Version:** 1.0
-- **Status:** DRAFT
+- **Status:** PUBLISHED
 
 Overview
 --------
