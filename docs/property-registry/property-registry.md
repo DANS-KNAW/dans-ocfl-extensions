@@ -42,8 +42,16 @@ Configuration is done by setting values in the file `config.json` at the top lev
 - Name: `type`
     - Description: The JSON type of the property.
     - Type: String.
-    - Constraints: Must be one of: `number`, `string`, `boolean` or `object`. If `object`, the property must have a `properties` key defined.
+    - Constraints: Must be one of: `number`, `string`, `boolean`, `object` or `array`. If `object`, the property must have a `properties` key defined. If
+      `array`, the items of the array must all be of the same simple type (see `item-type`).
     - Required: true.
+    - Default: `string`.
+
+- Name: `item-type`
+    - Description: If the property is of type `array`, this contains the type of the items in the array.
+    - Type: String.
+    - Constraints: Must be one of: `number`, `string`, `boolean`.
+    - Required: false
     - Default: `string`.
 
 - Name: `constraints`
@@ -75,8 +83,8 @@ Configuration is done by setting values in the file `config.json` at the top lev
     - Required: false.
     - Default: None.
 
-Note, that the `array` type is not supported, as this would make validation of the property values more complex. The properties defined by this extension are
-intended to be fairly simple and not to be used for complex data structures, which are better stored in the content files of the OCFL object.
+Note, that the `array` type is only supported for simple element types, not for objects or other arrays. The reason is that all the elements in the array
+must be of the same type, and supporting objects and arrays would require an object class concept.
 
 Note also that this extension does not define a generic way to validate the property values against the constraints.
 
@@ -186,12 +194,12 @@ Conformance
 -----------
 
 - MUST:
-  - `config.json` contain only `extensionName` and `propertyRegistry`.
-  - `extensionName` be exactly `property-registry`.
-  - Each property description include `description` and `type` and follow the rules outlined above.
-  - Object-typed properties MUST declare `properties` as an object mapping their child properties.
-  - If a property is `required: true`, it MUST NOT specify a `default`.
+    - `config.json` contain only `extensionName` and `propertyRegistry`.
+    - `extensionName` be exactly `property-registry`.
+    - Each property description include `description` and `type` and follow the rules outlined above.
+    - Object-typed properties MUST declare `properties` as an object mapping their child properties.
+    - If a property is `required: true`, it MUST NOT specify a `default`.
 - SHOULD:
-  - Implementations validate `config.json` against the published JSON Schema.
+    - Implementations validate `config.json` against the published JSON Schema.
 - MAY:
-  - Include human-readable `constraints` strings for guidance.
+    - Include human-readable `constraints` strings for guidance.

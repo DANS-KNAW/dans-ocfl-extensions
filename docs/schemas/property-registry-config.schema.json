@@ -18,7 +18,8 @@
       "additionalProperties": false,
       "properties": {
         "description": {"type": "string"},
-        "type": {"type": "string", "enum": ["number", "string", "boolean", "object"]},
+        "type": {"type": "string", "enum": ["number", "string", "boolean", "object", "array"]},
+        "item-type": {"type": "string", "enum": ["number", "string", "boolean"]},
         "constraints": {"type": "string"},
         "required": {"type": "boolean"},
         "default": {},
@@ -32,6 +33,10 @@
         {
           "if": {"properties": {"type": {"const": "object"}}, "required": ["type"]},
           "then": {"required": ["properties"]}
+        },
+        {
+          "if": {"properties": {"type": {"const": "array"}}, "required": ["type"]},
+          "then": {"required": ["item-type"]}
         },
         {
           "if": {"properties": {"required": {"const": true}}, "required": ["required"]},
