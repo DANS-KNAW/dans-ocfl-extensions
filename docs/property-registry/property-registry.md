@@ -43,11 +43,11 @@ Configuration is done by setting values in the file `config.json` at the top lev
     - Description: The JSON type of the property.
     - Type: String.
     - Constraints: Must be one of: `number`, `string`, `boolean`, `object` or `array`. If `object`, the property must have a `properties` key defined. If
-      `array`, the items of the array must all be of the same simple type (see `item-type`).
+      `array`, the items of the array must all be of the same simple type (see `itemType`).
     - Required: true.
     - Default: `string`.
 
-- Name: `item-type`
+- Name: `itemType`
     - Description: If the property is of type `array`, this contains the type of the items in the array.
     - Type: String.
     - Constraints: Must be one of: `number`, `string`, `boolean`.
