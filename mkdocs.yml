@@ -27,11 +27,11 @@ nav:
     - Object Version Properties: object-version-properties/object-version-properties.md
     - Property Registry: property-registry/property-registry.md
     - Packaging Format Registry: packaging-format-registry/packaging-format-registry.md
+  - Context:
+    - Overview: context.md
   - Examples:
     - Overview: examples.md
     - Collaboration: collaboration/index.md
-  - Context:
-    - ⇒ DANS Data Station Architecture: arch.md
 
 extra:
   schema_registry_extension: https://ocfl.github.io/extensions/0008-schema-registry.html
