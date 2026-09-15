@@ -22,8 +22,8 @@
     <parent>
         <groupId>nl.knaw.dans</groupId>
         <artifactId>dd-parent</artifactId>
-        <version>1.12.0</version>
-        <relativePath />
+        <version>3.0.0-SNAPSHOT</version>
+        <relativePath/>
     </parent>
 
     <artifactId>dans-ocfl-extensions</artifactId>
@@ -42,34 +42,34 @@
         <resources>
             <!-- Place the extension Markdown docs under extension-docs/ in the JAR -->
             <resource>
-                <directory>docs/object-version-properties</directory>
-                <filtering>false</filtering>
                 <targetPath>extension-docs</targetPath>
+                <filtering>false</filtering>
+                <directory>docs/object-version-properties</directory>
                 <includes>
                     <include>object-version-properties.md</include>
                 </includes>
             </resource>
             <resource>
-                <directory>docs/packaging-format-registry</directory>
-                <filtering>false</filtering>
                 <targetPath>extension-docs</targetPath>
+                <filtering>false</filtering>
+                <directory>docs/packaging-format-registry</directory>
                 <includes>
                     <include>packaging-format-registry.md</include>
                 </includes>
             </resource>
             <resource>
-                <directory>docs/property-registry</directory>
-                <filtering>false</filtering>
                 <targetPath>extension-docs</targetPath>
+                <filtering>false</filtering>
+                <directory>docs/property-registry</directory>
                 <includes>
                     <include>property-registry.md</include>
                 </includes>
             </resource>
             <!-- Place all schema JSON files under schemas/ in the JAR -->
             <resource>
-                <directory>docs/schemas</directory>
-                <filtering>false</filtering>
                 <targetPath>schemas</targetPath>
+                <filtering>false</filtering>
+                <directory>docs/schemas</directory>
                 <includes>
                     <include>object-version-properties.schema.json</include>
                     <include>packaging-format-registry-config.schema.json</include>
@@ -109,50 +109,30 @@
                 <executions>
                     <execution>
                         <id>rewrite-markdown-cross-links</id>
-                        <phase>process-resources</phase>
-                        <configuration>
-                            <target>
-                                <mkdir dir="${project.build.outputDirectory}/extension-docs" />
-                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md" match="\(\.\./object-version-properties/object-version-properties\.md\)" replace="(object-version-properties.md)" byline="true" />
-                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md" match="\(\.\./property-registry/property-registry\.md\)" replace="(property-registry.md)" byline="true" />
-                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/property-registry.md" match="\(\.\./packaging-format-registry/packaging-format-registry\.md\)" replace="(packaging-format-registry.md)" byline="true" />
-                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/property-registry.md" match="\(\.\./object-version-properties/object-version-properties\.md\)" replace="(object-version-properties.md)" byline="true" />
-                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\(\.\./property-registry/property-registry\.md\)" replace="(property-registry.md)" byline="true" />
-                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\(\.\./packaging-format-registry/packaging-format-registry\.md\)" replace="(packaging-format-registry.md)" byline="true" />
-                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\(\.\./property-registry/property-registry\.md\)" replace="(property-registry.md)" byline="true" />
-                                <!-- Remove {:target="_blank"} from all links -->
-                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md" match="\s*\{\:target=_blank\}" replace="" byline="true" />
-                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/property-registry.md" match="\s*\{\:target=_blank\}" replace="" byline="true" />
-                                <replaceregexp file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\s*\{\:target=_blank\}" replace="" byline="true" />
-
-                            </target>
-                        </configuration>
                         <goals>
                             <goal>run</goal>
                         </goals>
+                        <phase>process-resources</phase>
+                        <configuration>
+                            <target>
+                                <mkdir dir="${project.build.outputDirectory}/extension-docs"/>
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md" match="\(\.\./object-version-properties/object-version-properties\.md\)" replace="(object-version-properties.md)"/>
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md" match="\(\.\./property-registry/property-registry\.md\)" replace="(property-registry.md)"/>
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/property-registry.md" match="\(\.\./packaging-format-registry/packaging-format-registry\.md\)" replace="(packaging-format-registry.md)"/>
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/property-registry.md" match="\(\.\./object-version-properties/object-version-properties\.md\)" replace="(object-version-properties.md)"/>
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\(\.\./property-registry/property-registry\.md\)" replace="(property-registry.md)"/>
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\(\.\./packaging-format-registry/packaging-format-registry\.md\)" replace="(packaging-format-registry.md)"/>
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\(\.\./property-registry/property-registry\.md\)" replace="(property-registry.md)"/>
+                                <!-- Remove {:target="_blank"} from all links -->
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md" match="\s*\{\:target=_blank\}" replace=""/>
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/property-registry.md" match="\s*\{\:target=_blank\}" replace=""/>
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\s*\{\:target=_blank\}" replace=""/>
+
+                            </target>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>DANS</id>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <url>https://maven.dans.knaw.nl/releases</url>
-        </repository>
-    </repositories>
-    <pluginRepositories>
-        <pluginRepository>
-            <id>DANS</id>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <url>https://maven.dans.knaw.nl/releases</url>
-        </pluginRepository>
-    </pluginRepositories>
 </project>
-
