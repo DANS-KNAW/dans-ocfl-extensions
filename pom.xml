@@ -35,8 +35,8 @@
     <inceptionYear>2026</inceptionYear>
 
     <scm>
-        <connection>scm:git:https://github.com/DANS-KNAW/${project.artifactId}</connection>
-        <developerConnection>scm:git:ssh://github.com/DANS-KNAW/${project.artifactId}</developerConnection>
+        <connection>scm:git:https://github.com/DANS-KNAW/dans-ocfl-extensions</connection>
+        <developerConnection>scm:git:ssh://github.com/DANS-KNAW/dans-ocfl-extensions</developerConnection>
         <tag>HEAD</tag>
         <url>https://github.com/DANS-KNAW/${project.artifactId}</url>
     </scm>
