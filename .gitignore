@@ -4,3 +4,4 @@
 /.venv-mkdocs
 .DS_Store
 /target
+/__pycache__*
