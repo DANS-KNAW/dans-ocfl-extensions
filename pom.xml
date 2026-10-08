@@ -23,11 +23,11 @@
         <groupId>nl.knaw.dans</groupId>
         <artifactId>dd-parent</artifactId>
         <version>4.0.0</version>
-        <relativePath/>
+        <relativePath />
     </parent>
 
     <artifactId>dans-ocfl-extensions</artifactId>
-    <version>1.1.1-SNAPSHOT</version>
+    <version>1.1.1</version>
     <packaging>jar</packaging>
 
     <name>DANS OCFL Extensions documentation resources</name>
@@ -37,7 +37,7 @@
     <scm>
         <connection>scm:git:https://github.com/DANS-KNAW/dans-ocfl-extensions</connection>
         <developerConnection>scm:git:ssh://github.com/DANS-KNAW/dans-ocfl-extensions</developerConnection>
-        <tag>HEAD</tag>
+        <tag>v1.1.1</tag>
         <url>https://github.com/DANS-KNAW/dans-ocfl-extensions</url>
     </scm>
 
@@ -122,18 +122,18 @@
                         <phase>process-resources</phase>
                         <configuration>
                             <target>
-                                <mkdir dir="${project.build.outputDirectory}/extension-docs"/>
-                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md" match="\(\.\./object-version-properties/object-version-properties\.md\)" replace="(object-version-properties.md)"/>
-                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md" match="\(\.\./property-registry/property-registry\.md\)" replace="(property-registry.md)"/>
-                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/property-registry.md" match="\(\.\./packaging-format-registry/packaging-format-registry\.md\)" replace="(packaging-format-registry.md)"/>
-                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/property-registry.md" match="\(\.\./object-version-properties/object-version-properties\.md\)" replace="(object-version-properties.md)"/>
-                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\(\.\./property-registry/property-registry\.md\)" replace="(property-registry.md)"/>
-                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\(\.\./packaging-format-registry/packaging-format-registry\.md\)" replace="(packaging-format-registry.md)"/>
-                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\(\.\./property-registry/property-registry\.md\)" replace="(property-registry.md)"/>
+                                <mkdir dir="${project.build.outputDirectory}/extension-docs" />
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md" match="\(\.\./object-version-properties/object-version-properties\.md\)" replace="(object-version-properties.md)" />
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md" match="\(\.\./property-registry/property-registry\.md\)" replace="(property-registry.md)" />
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/property-registry.md" match="\(\.\./packaging-format-registry/packaging-format-registry\.md\)" replace="(packaging-format-registry.md)" />
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/property-registry.md" match="\(\.\./object-version-properties/object-version-properties\.md\)" replace="(object-version-properties.md)" />
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\(\.\./property-registry/property-registry\.md\)" replace="(property-registry.md)" />
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\(\.\./packaging-format-registry/packaging-format-registry\.md\)" replace="(packaging-format-registry.md)" />
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\(\.\./property-registry/property-registry\.md\)" replace="(property-registry.md)" />
                                 <!-- Remove {:target="_blank"} from all links -->
-                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md" match="\s*\{\:target=_blank\}" replace=""/>
-                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/property-registry.md" match="\s*\{\:target=_blank\}" replace=""/>
-                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\s*\{\:target=_blank\}" replace=""/>
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/packaging-format-registry.md" match="\s*\{\:target=_blank\}" replace="" />
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/property-registry.md" match="\s*\{\:target=_blank\}" replace="" />
+                                <replaceregexp byline="true" file="${project.build.outputDirectory}/extension-docs/object-version-properties.md" match="\s*\{\:target=_blank\}" replace="" />
 
                             </target>
                         </configuration>
